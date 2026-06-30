@@ -100,7 +100,7 @@ function App() {
               <React.Fragment key={a.rank}>
                 <ArtistEntry artist={a} side={side} featured={featured} onVideo={openVideo} />
                 {a.rank === 3 && <NewsletterSignup />}
-                {[5, 10, 15, 20].includes(a.rank) && <MissEllieHorizontal />}
+                {[5, 10, 15, 20].includes(a.rank) && <MissEllieHorizontal id={a.rank} />}
               </React.Fragment>
             );
           });

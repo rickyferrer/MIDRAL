@@ -425,17 +425,17 @@ function Contents({ open, onClose, artists }) {
 }
 
 /* --------------------------------------------------------- MissEllieHorizontal */
-function MissEllieHorizontal() {
+function MissEllieHorizontal({ id }) {
+  const uid = "MissEllie_horizontal-" + (id || "1");
   return (
-    <div style={{ textAlign: "center" }} className="c-advertisement display-none">
-      <span className="o-eyebrow">Advertisement</span>
-      <div className="c-advertisement__ad">
-        <div
-          className="adunit"
-          data-adunit="MissEllie_horizontal"
-          data-mapping="mapping_horizontal"
-        ></div>
-      </div>
+    <div className="c-advertisement l-container--l u-spacing--quarter display-block" style={{ textAlign: "center" }}>
+      <span className="o-eyebrow c-advertisement__eyebrow">Advertisement</span>
+      <div
+        className="adunit adunit--horizontal display-block"
+        data-adunit="MissEllie_horizontal"
+        data-mapping="mapping_horizontal"
+        id={uid}
+      ></div>
     </div>
   );
 }
