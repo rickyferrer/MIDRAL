@@ -272,7 +272,7 @@ function Judges({ onVideo }) {
           {J.map((j, i) =>
           <div className="judge reveal" key={i}>
               <div className="on-dark">
-                <image-slot id={"judge-" + i} shape="rect" placeholder={"Photo: " + j.first + " " + j.last}></image-slot>
+                <img src={"uploads/judge-" + i + ".webp"} alt={j.first + " " + j.last} style={{width:"100%",height:"100%",objectFit:"cover",display:"block"}} />
               </div>
               <div className="judge__name" style={{ fontSize: "36px" }}>
                 {j.first} <b>{j.last}</b>
