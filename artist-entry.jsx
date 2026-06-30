@@ -14,10 +14,26 @@ function ArtistEntry({ artist, side, featured, onVideo }) {
 
   const copyLink = useCallback(() => {
     const url = window.location.href.split("#")[0] + "#artist-" + a.rank;
-    navigator.clipboard.writeText(url).then(() => {
+    const fallback = () => {
+      const ta = document.createElement("textarea");
+      ta.value = url;
+      ta.style.cssText = "position:fixed;top:0;left:0;opacity:0";
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    });
+    };
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(url).then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      }).catch(fallback);
+    } else {
+      fallback();
+    }
   }, [a.rank]);
 
   return (

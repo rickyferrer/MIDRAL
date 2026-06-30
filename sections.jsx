@@ -70,9 +70,9 @@ function Hero({ onVideo }) {
 
         <div className="hero__title">
           <h1 style={{ margin: 0 }}>
-            <span className="display line" style={{ fontWeight: "100", fontSize: "90px" }}>THE <span className="num">25</span> MOST INFLUENTIAL</span>
-            <span className="display line" style={{ fontWeight: "100", fontSize: "90px" }}>DALLAS RECORDING ARTISTS</span>
-            <span className="display line" style={{ fontWeight: "100", fontSize: "90px" }}>OF THE LAST <span className="num">25</span> YEARS</span>
+            <span className="display line" style={{ fontWeight: "100" }}>THE <span className="num">25</span> MOST INFLUENTIAL</span>
+            <span className="display line" style={{ fontWeight: "100" }}>DALLAS RECORDING ARTISTS</span>
+            <span className="display line" style={{ fontWeight: "100" }}>OF THE LAST <span className="num">25</span> YEARS</span>
           </h1>
           <div className="hero__sub" style={{ fontWeight: "100" }}>A Love Letter to People in Our Ears</div>
         </div>
@@ -100,7 +100,7 @@ function Divider({ kicker, title, body, ghost, className }) {
     <section className={"divider " + (className || "sec-orange")}>
       {ghost ? <div className="divider__ghost" aria-hidden="true">{ghost}</div> : null}
       <div className="kicker reveal" style={{ fontSize: "14px" }}>{kicker}</div>
-      <h2 className="reveal d1" style={{ fontWeight: "200", fontSize: "120px", letterSpacing: "1.5px" }}>{title}</h2>
+      <h2 className="reveal d1" style={{ fontWeight: "200", letterSpacing: "1.5px" }}>{title}</h2>
       {body ? <p className="reveal d2">{body}</p> : null}
     </section>);
 
@@ -113,7 +113,7 @@ function IntroEssay({ onVideo }) {
     <section className="intro" id="intro">
       <div className="intro__wrap">
         <div className="intro__head reveal">
-          <h2 style={{ whiteSpace: "nowrap", fontSize: "59px", maxWidth: "none" }}>Why does it matter where music comes from?</h2>
+          <h2>Why does it matter where music comes from?</h2>
         </div>
         <div className="intro__body reveal d1">
           {I.body.map((p, i) => <p key={i}>{p}</p>)}
@@ -231,6 +231,7 @@ function Studios() {
 
 
 
+
     // no zoom on selection — view stays fixed unless user resets
   }, [sel]);return <section className="studiomap" id="studios">
       <div className="studiomap__head">
@@ -253,8 +254,7 @@ function Studios() {
             </button>)}
         </div>
       </div>
-    </section>;
-}
+    </section>;}
 
 /* ------------------------------------------------------------------ Judges */
 function Judges({ onVideo }) {
@@ -321,11 +321,11 @@ function Footer() {
           <p className="playlist__note">Placeholder — a full 25-track playlist (Spotify / Apple Music) drops in here.</p>
         </div>
         <div className="display">People in<br />Our Ears</div>
-        <p>
-          The 25 Most Influential Dallas Recording Artists of the Last 25 Years &mdash;
-          a love letter from D Magazine, July 2026. Words by Mike Marshall, Bethany Erickson,
-          Jeff &ldquo;Skin&rdquo; Wade, Pete Freedman, Bobby Sessions, Chris Holt, Josh Campbell,
-          Kevin Turner, and Jason Janik.
+        <p>The 25 Most Influential Dallas Recording Artists of the Last 25 Years from the July 2026 Issue of D Magazine. Words by Mike Marshall, Bethany Erickson, Jeff “Skin” Wade, Pete Freedman, Bobby Sessions, Chris Holt, Josh Campbell, Kevin Turner, and Jason Janik.
+
+
+
+
         </p>
         <button className="foot__top" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
           <span>&uarr;</span> Back to the top
@@ -397,8 +397,8 @@ function Contents({ open, onClose, artists }) {
                 inputClass="contents__nl-input"
                 btnClass="contents__nl-btn"
                 inputPlaceholder="Enter your email"
-                btnLabel="Subscribe →"
-              />
+                btnLabel="Subscribe →" />
+              
             </div>
           </div>
         </div>
@@ -461,8 +461,8 @@ function HubSpotForm({ inputClass, btnClass, inputPlaceholder, btnLabel, wrapCla
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             fields: [{ objectTypeId: "0-1", name: "email", value: email }],
-            context: { pageUri: window.location.href, pageName: document.title },
-          }),
+            context: { pageUri: window.location.href, pageName: document.title }
+          })
         }
       );
       setStatus(res.ok ? "ok" : "err");
@@ -482,13 +482,13 @@ function HubSpotForm({ inputClass, btnClass, inputPlaceholder, btnLabel, wrapCla
         placeholder={inputPlaceholder || "Your email address"}
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        required
-      />
+        required />
+      
       <button className={btnClass} type="submit" disabled={status === "sending"}>
-        {status === "sending" ? "…" : (btnLabel || "Subscribe")}
+        {status === "sending" ? "…" : btnLabel || "Subscribe"}
       </button>
-    </form>
-  );
+    </form>);
+
 }
 
 /* --------------------------------------------------------- NewsletterSignup */
@@ -507,8 +507,8 @@ function NewsletterSignup() {
             btnClass="newsletter__btn"
             inputPlaceholder="Your email address"
             btnLabel="Subscribe"
-            wrapClass="newsletter__placeholder"
-          />
+            wrapClass="newsletter__placeholder" />
+          
           <p className="newsletter__fine">By subscribing you agree to our privacy policy. Unsubscribe any time.</p>
         </div>
       </div>

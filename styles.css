@@ -41,7 +41,7 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   margin: 0;
@@ -987,9 +987,9 @@ image-slot::part(frame) { background: rgba(26, 10, 4, 0.06); }
   text-transform: uppercase;
   font-size: 32px;\n  line-height: 1.0;
   margin: 14px 0 8px;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  word-break: break-word;
 }
 .judge__name b { color: var(--ink); display: inline; font-weight: 200; }
 .judge__bio {
@@ -1440,7 +1440,7 @@ body.no-motion .reveal { opacity: 1 !important; transform: none !important; tran
    RESPONSIVE
    =========================================================================== */
 @media (max-width: 900px) {
-  .hero { grid-template-columns: 1fr; }
+  .hero { display: flex; flex-direction: column; }
   .hero__sub { white-space: normal; }
   .hero__photo { position: relative; width: 100%; height: auto; top: auto; right: auto; overflow: visible; padding: 0; order: -1; }
   .hero__photo image-slot { height: 52vw; }
@@ -1458,5 +1458,56 @@ body.no-motion .reveal { opacity: 1 !important; transform: none !important; tran
 }
 @media (max-width: 520px) {
   .intro__body { columns: 1; }
-  .hero__title .display { font-size: clamp(40px, 12vw, 64px); }
+  .hero__title .display { font-size: clamp(22px, 7.5vw, 36px); }
+  .hero__title .line { white-space: normal; }
+  .entry__rank { font-size: clamp(52px, 14vw, 80px); }
+}
+
+/* ── extra mobile polish ── */
+@media (max-width: 640px) {
+  /* topbar: truncate long title, hide progress counter */
+  .topbar { gap: 6px; padding: 10px 12px; }
+  .topbar__title {
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+    min-width: 0;
+  }
+  .topbar__progress { display: none; }
+
+  /* contents overlay header: stack newsletter below title row */
+  .contents__head {
+    flex-wrap: wrap;
+    padding: 14px clamp(14px, 4vw, 22px);
+    gap: 10px;
+  }
+  .contents__head-right {
+    border-left: none;
+    padding-left: 0;
+    flex-basis: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 10px;
+  }
+  .contents__seclabel { padding-left: clamp(14px, 4vw, 22px); }
+  .contents__sections { padding-left: clamp(14px, 4vw, 22px); padding-right: clamp(14px, 4vw, 22px); }
+  .contents__list { padding-left: clamp(14px, 4vw, 22px); padding-right: clamp(14px, 4vw, 22px); }
+
+  /* artist entry text */
+  .entry__body p { font-size: 17px; line-height: 1.6; }
+  .entry__name { font-size: clamp(28px, 8vw, 52px); }
+
+  /* newsletter section */
+  .newsletter { padding: clamp(28px, 5vw, 48px) clamp(16px, 5vw, 32px); }
+
+  /* studio map list */
+  .studiomap__list { padding: clamp(16px, 3vw, 28px) clamp(16px, 3vw, 24px); }
+
+  /* judges grid — tighter on narrow screens */
+  .judges__grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 18px; }
+  .judge__name { font-size: 24px; }
+
+  /* footer playlist */
+  .playlist { padding: clamp(16px, 4vw, 24px); }
 }
