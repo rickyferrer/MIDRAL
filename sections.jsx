@@ -447,7 +447,7 @@ function NewsletterSignup() {
       <div className="newsletter__inner">
         <div className="newsletter__text">
           <div className="kicker">Things To Do</div>
-          <h3 className="newsletter__title">STAY IN THE LOOP</h3>
+          <h3 className="newsletter__title" style={{ fontFamily: 'var(--display)', fontWeight: "200", fontSize: "clamp(34px, 5.2vw, 76px)", lineHeight: "0.9", textTransform: "uppercase" }}>STAY IN THE LOOP</h3>
           <p className="newsletter__body">Every week our editors hand-pick the best concerts and live music events happening across Dallas–Fort Worth.</p>
         </div>
         <div className="newsletter__form">
