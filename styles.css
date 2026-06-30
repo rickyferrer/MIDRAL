@@ -1224,13 +1224,14 @@ image-slot::part(frame) { background: rgba(26, 10, 4, 0.06); }
 }
 .newsletter__input {
   flex: 1;
-  background: transparent;
+  background: rgba(255,255,255,0.07);
   border: none;
   outline: none;
   color: var(--white);
-  font-family: var(--body);
+  font-family: var(--flexa);
   font-size: 15px;
   padding: 14px 16px;
+  min-width: 0;
 }
 .newsletter__input::placeholder { color: rgba(255,255,255,0.35); }
 .newsletter__btn {

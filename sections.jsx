@@ -393,7 +393,12 @@ function Contents({ open, onClose, artists }) {
               <span className="contents__nl-pitch">DFW’s best events, every Thursday.</span>
             </div>
             <div className="contents__nl-form">
-              <HubSpotForm targetId="hs-form-contents" />
+              <HubSpotForm
+                inputClass="contents__nl-input"
+                btnClass="contents__nl-btn"
+                inputPlaceholder="Enter your email"
+                btnLabel="Subscribe →"
+              />
             </div>
           </div>
         </div>
@@ -440,25 +445,50 @@ function MissEllieHorizontal() {
 }
 
 /* --------------------------------------------------------- HubSpotForm */
-function HubSpotForm({ targetId }) {
-  const ref = React.useRef(null);
-  React.useEffect(() => {
-    if (!ref.current) return;
-    const init = () => {
-      if (window.hbspt) {
-        window.hbspt.forms.create({
-          portalId: "477347",
-          formId: "ba8642ce-a868-463d-8d20-c30e91cc5bee",
-          region: "na1",
-          target: "#" + targetId,
-        });
-      } else {
-        setTimeout(init, 300);
-      }
-    };
-    init();
-  }, []);
-  return <div id={targetId} ref={ref}></div>;
+function HubSpotForm({ inputClass, btnClass, inputPlaceholder, btnLabel, wrapClass }) {
+  const [email, setEmail] = React.useState("");
+  const [status, setStatus] = React.useState(null); // null | 'sending' | 'ok' | 'err'
+
+  const submit = async (e) => {
+    e.preventDefault();
+    if (!email) return;
+    setStatus("sending");
+    try {
+      const res = await fetch(
+        "https://api.hsforms.com/submissions/v3/integration/submit/477347/ba8642ce-a868-463d-8d20-c30e91cc5bee",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            fields: [{ objectTypeId: "0-1", name: "email", value: email }],
+            context: { pageUri: window.location.href, pageName: document.title },
+          }),
+        }
+      );
+      setStatus(res.ok ? "ok" : "err");
+    } catch (_) {
+      setStatus("err");
+    }
+  };
+
+  if (status === "ok") return <p style={{ margin: 0, fontFamily: "var(--sans)", fontSize: "13px", opacity: 0.8 }}>Thanks! You're subscribed.</p>;
+  if (status === "err") return <p style={{ margin: 0, fontFamily: "var(--sans)", fontSize: "13px", color: "#e9531e" }}>Something went wrong — please try again.</p>;
+
+  return (
+    <form onSubmit={submit} className={wrapClass || ""} style={{ display: "contents" }}>
+      <input
+        className={inputClass}
+        type="email"
+        placeholder={inputPlaceholder || "Your email address"}
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+      <button className={btnClass} type="submit" disabled={status === "sending"}>
+        {status === "sending" ? "…" : (btnLabel || "Subscribe")}
+      </button>
+    </form>
+  );
 }
 
 /* --------------------------------------------------------- NewsletterSignup */
@@ -472,7 +502,14 @@ function NewsletterSignup() {
           <p className="newsletter__body">Every week our editors hand-pick the best concerts and events happening across Dallas–Fort Worth.</p>
         </div>
         <div className="newsletter__form">
-          <HubSpotForm targetId="hs-form-newsletter" />
+          <HubSpotForm
+            inputClass="newsletter__input"
+            btnClass="newsletter__btn"
+            inputPlaceholder="Your email address"
+            btnLabel="Subscribe"
+            wrapClass="newsletter__placeholder"
+          />
+          <p className="newsletter__fine">By subscribing you agree to our privacy policy. Unsubscribe any time.</p>
         </div>
       </div>
     </section>);
