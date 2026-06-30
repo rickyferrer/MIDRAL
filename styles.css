@@ -971,9 +971,13 @@ image-slot::part(frame) { background: rgba(26, 10, 4, 0.06); }
   grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
   gap: clamp(24px, 2.6vw, 40px);
 }
-.judge image-slot {
+.judge image-slot,
+.judge img {
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
   filter: grayscale(1) contrast(1.05);
 }
 .judge__name {

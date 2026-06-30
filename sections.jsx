@@ -263,7 +263,6 @@ function Judges({ onVideo }) {
     <section className="judges sec-orange" id="judges">
       <div style={{ maxWidth: "var(--maxw)", margin: "0 auto" }}>
         <div className="intro__head reveal" style={{ marginBottom: 8 }}>
-          <PlayButton onClick={() => onVideo({ kicker: "Behind the list", title: "Meet the Judges", video: null })} label="Play judges video" />
           <h2 className="display" style={{ fontSize: "clamp(40px,7vw,104px)", margin: 0, lineHeight: 0.86, textTransform: "uppercase" }}>
             Meet Our Judges &amp; Writers
           </h2>
@@ -272,7 +271,7 @@ function Judges({ onVideo }) {
           {J.map((j, i) =>
           <div className="judge reveal" key={i}>
               <div className="on-dark">
-                <img src={"uploads/judge-" + i + ".webp"} alt={j.first + " " + j.last} style={{width:"100%",height:"100%",objectFit:"cover",display:"block"}} />
+                <img src={j.photo || ("uploads/judge-" + i + ".webp")} alt={j.first + " " + j.last} style={{width:"100%",height:"100%",objectFit:"cover",display:"block"}} />
               </div>
               <div className="judge__name" style={{ fontSize: "36px" }}>
                 {j.first} <b>{j.last}</b>
@@ -304,7 +303,6 @@ function Footer() {
       <div className="foot__inner">
         <div className="playlist" id="playlist">
           <div className="playlist__head">
-            <PlayButton size="sm" pulse onClick={() => {}} label="Play the playlist" />
             <div>
               <div className="kicker">Listen Along</div>
               <h3>The Companion Playlist</h3>
