@@ -81,7 +81,7 @@ function Hero({ onVideo }) {
           <PlayButton size="sm" pulse onClick={() => onVideo({ kicker: "Watch the film", title: "The 25 Most Influential", video: F.heroVideo })} label="Play feature film" />
           <p>{F.byline}</p>
         </div>
-        <p style={{marginTop:"10px",marginBottom:0,fontFamily:"var(--sans)",fontSize:"11px",fontWeight:700,letterSpacing:"0.1em",textTransform:"uppercase",opacity:0.5}}>Photo Illustrations by Mike Marshall</p>
+        <p style={{ marginTop: "10px", marginBottom: 0, fontFamily: "var(--sans)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", opacity: 0.5 }}>Photo Illustrations by Mike Marshall</p>
       </div>
 
       <HeroPhoto />
@@ -229,6 +229,8 @@ function Studios() {
 
 
 
+
+
     // no zoom on selection — view stays fixed unless user resets
   }, [sel]);return <section className="studiomap" id="studios">
       <div className="studiomap__head">
@@ -248,12 +250,10 @@ function Studios() {
               <span className="kicker loc">{st.location}</span>
               <div className="studiomap__name">{st.name}</div>
               <div className="studiomap__sub">{st.artists}</div>
-            </button>
-        )}
+            </button>)}
         </div>
       </div>
     </section>;
-
 }
 
 /* ------------------------------------------------------------------ Judges */
@@ -271,7 +271,7 @@ function Judges({ onVideo }) {
           {J.map((j, i) =>
           <div className="judge reveal" key={i}>
               <div className="on-dark">
-                <img src={j.photo || ("uploads/judge-" + i + ".webp")} alt={j.first + " " + j.last} style={{width:"100%",height:"100%",objectFit:"cover",display:"block"}} />
+                <img src={j.photo || "uploads/judge-" + i + ".webp"} alt={j.first + " " + j.last} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
               </div>
               <div className="judge__name" style={{ fontSize: "36px" }}>
                 {j.first} <b>{j.last}</b>
@@ -390,12 +390,10 @@ function Contents({ open, onClose, artists }) {
         <div className="contents__nl">
             <div className="contents__nl-eyebrow">
               <span className="contents__nl-kicker">Things To Do</span>
-              <span className="contents__nl-pitch">DFW’s best concerts, every Thursday.</span>
+              <span className="contents__nl-pitch">DFW’s best events, every Thursday.</span>
             </div>
             <div className="contents__nl-form">
-              {/* HUBSPOT_EMBED */}
-              <input className="contents__nl-input" type="email" placeholder="Enter your email" />
-              <button className="contents__nl-btn">Subscribe →</button>
+              <HubSpotForm targetId="hs-form-contents" />
             </div>
           </div>
         </div>
@@ -434,11 +432,33 @@ function MissEllieHorizontal() {
         <div
           className="adunit"
           data-adunit="MissEllie_horizontal"
-          data-mapping="mapping_horizontal"
-        ></div>
+          data-mapping="mapping_horizontal">
+        </div>
       </div>
-    </div>
-  );
+    </div>);
+
+}
+
+/* --------------------------------------------------------- HubSpotForm */
+function HubSpotForm({ targetId }) {
+  const ref = React.useRef(null);
+  React.useEffect(() => {
+    if (!ref.current) return;
+    const init = () => {
+      if (window.hbspt) {
+        window.hbspt.forms.create({
+          portalId: "477347",
+          formId: "ba8642ce-a868-463d-8d20-c30e91cc5bee",
+          region: "na1",
+          target: "#" + targetId,
+        });
+      } else {
+        setTimeout(init, 300);
+      }
+    };
+    init();
+  }, []);
+  return <div id={targetId} ref={ref}></div>;
 }
 
 /* --------------------------------------------------------- NewsletterSignup */
@@ -449,19 +469,14 @@ function NewsletterSignup() {
         <div className="newsletter__text">
           <div className="kicker">Things To Do</div>
           <h3 className="newsletter__title" style={{ fontFamily: 'var(--display)', fontWeight: "200", fontSize: "clamp(34px, 5.2vw, 76px)", lineHeight: "0.9", textTransform: "uppercase" }}>STAY IN THE LOOP</h3>
-          <p className="newsletter__body">Every week our editors hand-pick the best concerts and live music events happening across Dallas–Fort Worth.</p>
+          <p className="newsletter__body">Every week our editors hand-pick the best concerts and events happening across Dallas–Fort Worth.</p>
         </div>
         <div className="newsletter__form">
-          {/* HUBSPOT_EMBED */}
-          <div className="newsletter__placeholder">
-            <input className="newsletter__input" type="email" placeholder="Your email address" />
-            <button className="newsletter__btn">Subscribe</button>
-          </div>
-          <p className="newsletter__fine">By subscribing you agree to our privacy policy. Unsubscribe any time.</p>
+          <HubSpotForm targetId="hs-form-newsletter" />
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 /* --------------------------------------------------------------- VideoModal */
@@ -489,7 +504,7 @@ function VideoModal({ data, onClose }) {
 
     }
     if (/^[0-9a-f]{32}$/.test(v)) {
-      return <iframe src={"https://iframe.cloudflarestream.com/" + v + "?autoplay=true"} title={data.title} allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen style={{border:"none"}} />;
+      return <iframe src={"https://iframe.cloudflarestream.com/" + v + "?autoplay=true"} title={data.title} allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen style={{ border: "none" }} />;
     }
     if (/^[\w-]{6,15}$/.test(v)) {
       return <iframe src={"https://www.youtube.com/embed/" + v + "?autoplay=1&rel=0"} title={data.title} allow="autoplay; encrypted-media; fullscreen" allowFullScreen />;
