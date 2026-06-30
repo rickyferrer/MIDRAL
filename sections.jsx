@@ -406,9 +406,10 @@ function Contents({ open, onClose, artists }) {
         <button className="contents__seclink" onClick={() => jump("studios")}>Studios Map</button>
         <button className="contents__seclink" onClick={() => jump("judges")}>The Judges</button>
         <button className="contents__seclink" onClick={() => jump("playlist")}>Playlist</button>
-        <button className="contents__seclink" onClick={() => jump("show-us-your-list")}>Show Us Your List</button>
+        <a className="contents__seclink" href="#" target="_blank" rel="noreferrer">Who's Next? ↗</a>
+        <a className="contents__seclink" href="https://www.dmagazine.com/assets/forms/peoples-choice-dallas-top-5-influential-music-artists/" target="_blank" rel="noreferrer">Show Us Your List ↗</a>
         <a className="contents__seclink" href="https://www.dmagazine.com/guides/dallas-concert-event-calendar/" target="_blank" rel="noreferrer">Concert Calendar ↗</a>
-        <button className="contents__seclink" onClick={() => jump("venue-bracket")}>Best Music Venue Bracket</button>
+        <a className="contents__seclink" href="https://www.dmagazine.com/interactive/best-music-venues/" target="_blank" rel="noreferrer">Best Venues Voting ↗</a>
       </div>
       <div className="contents__seclabel">The 25, Ranked</div>
       <div className="contents__list">
@@ -425,17 +426,17 @@ function Contents({ open, onClose, artists }) {
 }
 
 /* --------------------------------------------------------- MissEllieHorizontal */
-function MissEllieHorizontal({ id }) {
-  const uid = "MissEllie_horizontal-" + (id || "1");
+function MissEllieHorizontal() {
   return (
-    <div className="c-advertisement l-container--l u-spacing--quarter display-block" style={{ textAlign: "center" }}>
-      <span className="o-eyebrow c-advertisement__eyebrow">Advertisement</span>
-      <div
-        className="adunit adunit--horizontal display-block"
-        data-adunit="MissEllie_horizontal"
-        data-mapping="mapping_horizontal"
-        id={uid}
-      ></div>
+    <div style={{ textAlign: "center" }} className="c-advertisement display-none">
+      <span className="o-eyebrow">Advertisement</span>
+      <div className="c-advertisement__ad">
+        <div
+          className="adunit"
+          data-adunit="MissEllie_horizontal"
+          data-mapping="mapping_horizontal"
+        ></div>
+      </div>
     </div>
   );
 }
