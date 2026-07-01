@@ -439,7 +439,7 @@ function MissEllieHorizontal({ rank }) {
 
   return (
     <div style={{ textAlign: "center", padding: "20px 0", background: "#fff" }} className="c-advertisement">
-      <span className="o-eyebrow">Advertisement</span>
+      <span className="o-eyebrow" style={{ fontSize: "14px", display: "block", paddingBottom: "10px" }}>Advertisement</span>
       <div className="c-advertisement__ad">
         <div
           id={`ad-slot-${rank}`}
