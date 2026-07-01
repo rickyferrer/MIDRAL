@@ -13,7 +13,16 @@
   />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8216992052150314" crossorigin="anonymous"></script>
+<script>
+  window.googletag = window.googletag || { cmd: [] };
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/23334079222/MissEllie_horizontal', [970, 250], 'ad-slot-5').addService(googletag.pubads());
+    // ...repeat for each slot with unique div IDs...
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
+</script>
+  
 </head>
 <body>
   <div id="root"></div>
