@@ -32,7 +32,7 @@ function HeroPhoto() {
   if (artists.length === 0) {
     return (
       <div className="hero__photo">
-        <div className="hero__rot hero__rot--empty" style={{ width: "400px" }}>
+        <div className="hero__rot hero__rot--empty" style={{ width: "100%" }}>
           <div className="hero__coverhint">
             <div className="kicker">The Cover</div>
             <p>Drop a photo onto any artist below &mdash; the cover rotates through them at random.</p>
@@ -273,7 +273,7 @@ function Judges({ onVideo }) {
               <div className="on-dark">
                 <img src={j.photo || "uploads/judge-" + i + ".webp"} alt={j.first + " " + j.last} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
               </div>
-              <div className="judge__name" style={{ fontSize: "36px" }}>
+              <div className="judge__name" style={{ fontSize: "clamp(22px, 3.5vw, 36px)" }}>
                 {j.first} <b>{j.last}</b>
               </div>
               <div className="judge__rule" />

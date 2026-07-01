@@ -20,6 +20,7 @@ window.INTRO = {
   heading: "Why does it matter where music comes from?",
   byline: "Mike Marshall",
   hasVideo: true,
+  video: "281121125a6eb8ce5527f88bc17856cf",
   body: [
     "Maybe to you, it doesn\u2019t. In which case, what a blissfully ignorant life you must lead\u2014never wondering what the origin story of \u201CPossum Kingdom\u201D is (it\u2019s not about a murder on the lake) or asking what The D.O.C. refers to (Dallas Oak Cliff). After all, great art can be appreciated at different depths. You don\u2019t need to know that \u201CBoys of Summer\u201D was originally written for Tom Petty by his guitarist Mike Campbell to understand it absolutely slaps.",
     "But I do. I need to know everything. I\u2019ve always had a curiosity for what environment molded the art in front of me. What has the artist lived through? What did it cost to get here? If they\u2019re from the same place as I am, what are they seeing that I can\u2019t? More critically, are they saying anything that hasn\u2019t been said before, or making a sound that hasn\u2019t yet become hack? For the artists on this list, the answers to all of those questions were influenced by Dallas. In turn, you can find a piece of Dallas in how they\u2019ve influenced the world around them.",
@@ -86,7 +87,8 @@ window.ARTISTS = [
     era: "2002\u2013present",
     place: "Grapevine",
     writer: "Bethany Erickson",
-    hasVideo: false,
+    hasVideo: true,
+    video: "7db3ba53bf0f5631573dd03d17b8ea50",
     featured: false,
     pull: "Art is meant to be played with.",
     body: [

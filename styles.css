@@ -649,6 +649,7 @@ section { position: relative; }
   max-width: none;
   white-space: nowrap;
 }
+@media (max-width: 640px) { .intro h2 { white-space: normal; font-size: clamp(28px, 7vw, 48px); } }
 .intro__body { columns: 2; column-gap: 52px; }
 @media (max-width: 760px) { .intro__body { columns: 1; } }
 .intro__body p {
@@ -1442,13 +1443,14 @@ body.no-motion .reveal { opacity: 1 !important; transform: none !important; tran
    RESPONSIVE
    =========================================================================== */
 @media (max-width: 900px) {
-  .hero { display: flex; flex-direction: column; }
+  .hero { display: flex; flex-direction: column; min-height: 0; }
   .hero__sub { white-space: normal; }
   .hero__photo { position: relative; width: 100%; height: auto; top: auto; right: auto; overflow: visible; padding: 0; order: -1; }
-  .hero__photo image-slot { height: 52vw; }
-  .hero__rot { height: 52vw; }
-  .hero__left { min-height: auto; padding-bottom: 56px; }
-  .hero__byline { max-width: 100%; }
+  .hero__photo image-slot { height: 56vw; }
+  .hero__rot { position: relative; width: 100%; height: 56vw; top: auto; right: auto; }
+  .hero__left { min-height: auto; padding-bottom: 36px; }
+  .hero__title { margin-top: clamp(16px, 3vh, 32px); }
+  .hero__byline { max-width: 100%; margin-top: clamp(16px, 2.5vh, 32px); }
   .hero__caption { position: static; max-width: none; margin-top: 22px; }
   .hero__credit { display: none; }
   .entry__inner { grid-template-columns: 1fr; gap: 28px; }
