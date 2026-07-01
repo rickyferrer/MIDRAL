@@ -429,19 +429,27 @@ function Contents({ open, onClose, artists }) {
 }
 
 /* --------------------------------------------------------- MissEllieHorizontal */
-function MissEllieHorizontal() {
+
+function MissEllieHorizontal({ rank }) {
+  React.useEffect(() => {
+    if (window.googletag && window.googletag.apiReady) {
+      window.googletag.display(`ad-slot-${rank}`);
+    }
+  }, [rank]);
+
   return (
-    <div style={{ textAlign: "center" }} className="c-advertisement display-none">
-      <span className="o-eyebrow">Advertisement</span>
+    <div style={{ textAlign: "center", padding: "20px 0", background: "#fff" }} className="c-advertisement">
+      <span className="o-eyebrow" style={{ fontSize: "14px", display: "block", paddingBottom: "10px" }}>Advertisement</span>
       <div className="c-advertisement__ad">
         <div
+          id={`ad-slot-${rank}`}
           className="adunit"
           data-adunit="MissEllie_horizontal"
           data-mapping="mapping_horizontal">
         </div>
       </div>
-    </div>);
-
+    </div>
+  );
 }
 
 /* --------------------------------------------------------- HubSpotForm */
