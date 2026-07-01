@@ -13,7 +13,7 @@ window.FEATURE = {
     "By Mike Marshall, Bethany Erickson, Jeff \u201cSkin\u201d Wade, Pete Freedman, Bobby Sessions, Chris Holt, Josh Campbell, Kevin Turner, and Jason Janik",
   issue: "D Magazine \u2014 July 2026",
   // Drop a hero film here (YouTube ID or a local mp4 path). Leave null for the placeholder state.
-  heroVideo: "281121125a6eb8ce5527f88bc17856cf",
+  heroVideo: "61efa440cc230ba46978aa576bd20b25",
 };
 
 window.INTRO = {
@@ -45,7 +45,7 @@ window.ARTISTS = [
     rank: 1,
     photo: "uploads/Erykah Badu.jpg",
     name: "Erykah Badu",
-    genre: "Soul / R&B",
+    genre: "Neo-Soul",
     era: "1997\u2013present",
     place: "South Dallas",
     writer: "Jeff \u201cSkin\u201d Wade",
@@ -84,7 +84,7 @@ window.ARTISTS = [
     name: "Norah Jones",
     genre: "Jazz",
     era: "2002\u2013present",
-    place: "Booker T. Washington HSPVA",
+    place: "Grapevine",
     writer: "Bethany Erickson",
     hasVideo: false,
     featured: false,
@@ -116,7 +116,7 @@ window.ARTISTS = [
     rank: 5,
     photo: "uploads/Old 97s.jpg",
     name: "Old 97\u2019s",
-    genre: "Country",
+    genre: "Americana",
     era: "1993\u2013present",
     place: "Deep Ellum",
     writer: "Jeff \u201cSkin\u201d Wade",
@@ -311,7 +311,7 @@ window.ARTISTS = [
     rank: 16,
     photo: "uploads/Bowling-For-Soup.jpg",
     name: "Bowling for Soup",
-    genre: "Pop",
+    genre: "Pop Punk",
     era: "1994\u2013present",
     place: "Wichita Falls / Denton",
     writer: "Pete Freedman",
@@ -453,7 +453,7 @@ window.ARTISTS = [
     name: "BigXthaPlug",
     genre: "Hip-Hop",
     era: "2022\u2013present",
-    place: "Dallas",
+    place: "Pleasant Grove",
     writer: "Mike Marshall",
     hasVideo: false,
     featured: false,
