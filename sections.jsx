@@ -431,7 +431,7 @@ function Contents({ open, onClose, artists }) {
 /* --------------------------------------------------------- MissEllieHorizontal */
 function MissEllieHorizontal() {
   return (
-    <div style={{ textAlign: "center" }} className="c-advertisement display-none">
+    <div style={{ textAlign: "center" }} className="c-advertisement">
       <span className="o-eyebrow">Advertisement</span>
       <div className="c-advertisement__ad">
         <div
