@@ -13,13 +13,23 @@
   />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+<!-- Load the GPT library FIRST, before the googletag script block -->
+<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+
 <script>
   window.googletag = window.googletag || { cmd: [] };
   googletag.cmd.push(function() {
     googletag.defineSlot('/23334079222/MissEllie_horizontal', [970, 250], 'ad-slot-5').addService(googletag.pubads());
-    // ...repeat for each slot with unique div IDs...
+    googletag.defineSlot('/23334079222/MissEllie_horizontal', [970, 250], 'ad-slot-10').addService(googletag.pubads());
+    googletag.defineSlot('/23334079222/MissEllie_horizontal', [970, 250], 'ad-slot-15').addService(googletag.pubads());
+    googletag.defineSlot('/23334079222/MissEllie_horizontal', [970, 250], 'ad-slot-20').addService(googletag.pubads());
     googletag.pubads().enableSingleRequest();
     googletag.enableServices();
+
+    googletag.display('ad-slot-5');
+    googletag.display('ad-slot-10');
+    googletag.display('ad-slot-15');
+    googletag.display('ad-slot-20');
   });
 </script>
   

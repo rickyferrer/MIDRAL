@@ -429,19 +429,24 @@ function Contents({ open, onClose, artists }) {
 }
 
 /* --------------------------------------------------------- MissEllieHorizontal */
-function MissEllieHorizontal() {
+// In app.jsx, pass the rank:
+{[5, 10, 15, 20].includes(a.rank) && <MissEllieHorizontal rank={a.rank} />}
+
+// In sections.jsx, use the rank as the id:
+function MissEllieHorizontal({ rank }) {
   return (
     <div style={{ textAlign: "center" }} className="c-advertisement">
       <span className="o-eyebrow">Advertisement</span>
       <div className="c-advertisement__ad">
         <div
+          id={`ad-slot-${rank}`}
           className="adunit"
           data-adunit="MissEllie_horizontal"
           data-mapping="mapping_horizontal">
         </div>
       </div>
-    </div>);
-
+    </div>
+  );
 }
 
 /* --------------------------------------------------------- HubSpotForm */
