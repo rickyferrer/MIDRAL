@@ -433,7 +433,7 @@ function Contents({ open, onClose, artists }) {
 // In sections.jsx, use the rank as the id:
 function MissEllieHorizontal({ rank }) {
   return (
-    <div style={{ textAlign: "center" }} className="c-advertisement">
+    <div style={{ textAlign: "center", padding: "20px 0", background: "#fff" }} className="c-advertisement">
       <span className="o-eyebrow">Advertisement</span>
       <div className="c-advertisement__ad">
         <div
