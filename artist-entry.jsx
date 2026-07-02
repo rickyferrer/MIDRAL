@@ -56,7 +56,7 @@ function ArtistEntry({ artist, side, featured, onVideo }) {
               label={"Play " + a.name + " video"} /> :
             null}
           </div>
-
+          {a.credit && <p className="entry__photo-credit">{a.credit}</p>}
         </div>
 
         <div className="entry__text">

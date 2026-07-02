@@ -53,7 +53,7 @@ window.ARTISTS = [
     hasVideo: true,
     video: "17e0bba95bbca5a663d14517f620984c",
     featured: true,
-    credit: "Photograph \u2014 Adam McCulough",
+    credit: "Photograph \u2014 Denise Richardson",
     pull: "That\u2019s what one song can do for a city.",
     body: [
       "I didn\u2019t know who she was when she came home from Grambling State and reintegrated herself into our local rap scene. But the cats who had been around much longer than I had? They all knew Erykah Badu. She didn\u2019t seem like other female R&B artists of the time, and she didn\u2019t seem like a rapper either. But she had a vibe\u2014effortless, casual, and way too special to be spending any time around someone like me.",
@@ -72,6 +72,7 @@ window.ARTISTS = [
     hasVideo: true,
     video: "3bc8449caba30537f99506fe794583de",
     featured: false,
+    credit: "Photograph \u2014 Christian Bertrand",
     pull: "Music from a not-so-distant future you don\u2019t fully comprehend yet.",
     body: [
       "I\u2019ve been in love with Annie Clark (metaphorically and musically, if my wife is reading) for so long that I had forgotten when the switch flipped from knowing she\u2019s an adorable artist out of Lake Highlands to comprehending that Dallas produced one of the most intriguing musicians on earth. A simple re-listen made me remember in a hurry.",
@@ -90,6 +91,7 @@ window.ARTISTS = [
     hasVideo: true,
     video: "7db3ba53bf0f5631573dd03d17b8ea50",
     featured: false,
+    credit: "Photograph \u2014 Jason Janik",
     pull: "Art is meant to be played with.",
     body: [
       "Before Norah Jones invited everyone to \u201CCome Away With Me,\u201D she was a student at Booker T. Washington High School for the Performing and Visual Arts, walking the halls with the likes of Kirk Franklin\u2019s music director, the late Shaun Martin, and Erykah Badu collaborator RC Williams. Before that, there was a brief stint at Grapevine High, where she played saxophone in the marching band. She\u2019d go on to UNT, also known for churning out excellent, Grammy-winning musicians.",
@@ -107,6 +109,7 @@ window.ARTISTS = [
     writer: "Jeff \u201cSkin\u201d Wade",
     hasVideo: false,
     featured: false,
+    credit: "Photograph \u2014 Jason Janik",
     pull: "Turns out Leon Bridges didn\u2019t need any help from us.",
     body: [
       "In the fall of 2014, Chris Cantalini from the influential blog Gorilla vs. Bear emailed me and Danny Balis a SoundCloud link for a dude out of Fort Worth who was doing vintage soul. Not like the \u201960s retro funk and R&B that the Brooklyn-based Daptone folks were trailblazing with\u2014more that smooth Sam Cooke style. It was expertly tracked, and Leon Bridges\u2019 voice and songs were tailor-made for the approach.",
@@ -124,6 +127,7 @@ window.ARTISTS = [
     writer: "Jeff \u201cSkin\u201d Wade",
     hasVideo: false,
     featured: false,
+    credit: "Photograph \u2014 Jason Janik",
     pull: "Great bands that rep their scene never go out of style.",
     body: [
       "They cut their teeth in the smoky bars of Deep Ellum\u2019s supposed \u201990s heyday, but confine the Old 97\u2019s to that era at your own peril. Some of the band\u2019s best work dropped in the \u201910s, and nine of the group\u2019s 13 studio LPs were released within the last 25 years. Oh, and lest anyone forget: it was 20 years ago this summer that an Old 97\u2019s live show served as a pivotal scene in the 2006 Jennifer Aniston\u2013Vince Vaughn vehicle The Break-Up.",
@@ -141,6 +145,7 @@ window.ARTISTS = [
     writer: "Josh Campbell",
     hasVideo: false,
     featured: false,
+    credit: "Photograph \u2014 Jason Janik",
     pull: "A testament to a love that never died.",
     body: [
       "In 1994, Toadies\u2019 debut album Rubberneck thrust the band and North Texas into national relevance. Maybe we weren\u2019t Seattle, but we were making worthy contributions to the rebellious rock movement of the time, and Toadies were our champion. It came to a bitter end seven years later: Interscope rejected the band\u2019s second album, Feeler, and withheld promotion for Hell Below/Stars Above. Bassist Lisa Umbarger resigned, and Toadies were no more.",
@@ -230,7 +235,7 @@ window.ARTISTS = [
     writer: "Bethany Erickson",
     hasVideo: false,
     featured: false,
-    credit: "Photograph \u2014 Joe Seer",
+    credit: "Photograph \u2014 The Tennessean / USA TODAY NETWORK",
     pull: "You may not know his face, but you know his sound.",
     body: [
       "Before he was a guitarist in Bob Dylan\u2019s band, a Grammy winner, and the guy who gave some of the best-known names in music their start, T-Bone Burnett was Joseph Henry Burnett III, born in St. Louis and raised in Fort Worth, where his dad worked for Tandy Corp. after a brief flirtation with professional baseball.",
@@ -248,7 +253,7 @@ window.ARTISTS = [
     writer: "Chris Holt",
     hasVideo: false,
     featured: true,
-    credit: "Photograph \u2014 Kelly Rogers/Press Journal",
+    credit: "Photograph \u2014 James J. Connolly",
     pull: "It\u2019s always, first and foremost, about the song.",
     body: [
       "As the guitarist of his touring band, I can tell you that the bottom line with Don is that it\u2019s always, first and foremost, about the song. Lyrics are every bit as important as melody and harmony. He wants the song to be about something, and he carefully ponders each line\u2014the sound and meaning\u2014whether he\u2019s painting a haunting landscape of dystopian western life, waxing wistfully nostalgic about a long-lost love, or sniping at the superficialities of modern society.",
@@ -284,6 +289,7 @@ window.ARTISTS = [
     writer: "Kevin Turner",
     hasVideo: false,
     featured: false,
+    credit: "Photograph \u2014 Jason Janik",
     pull: "They just don\u2019t make \u2019em like The Polyphonic Spree.",
     body: [
       "The Spree\u2019s live shows are a religious experience that\u2019ll make you forget, if only for a night, that the Cowboys haven\u2019t been to a Super Bowl in 30 years. And their Holiday Extravaganza will set you right better than any ketamine session could. Credit that to more than 20 musicians from various backgrounds who coalesce to form a distinct, powerful, mesmerizing sound.",
@@ -301,7 +307,7 @@ window.ARTISTS = [
     writer: "Bethany Erickson",
     hasVideo: false,
     featured: false,
-    credit: "Photograph \u2014 Paul Mann",
+    credit: "Photograph \u2014 L. Paul Mann",
     pull: "It\u2019s hard to believe. That doesn\u2019t make it any less true.",
     body: [
       "So much of Edie Brickell\u2019s career sounds like legend, or possibly a fevered round of Mad Libs. Born in Oak Cliff. Attended Booker T. and SMU. The scattershot lyrics of \u201CWhat I Am\u201D with the New Bohemians, which became a smash hit when she was a mere 22 years old.",
@@ -337,7 +343,7 @@ window.ARTISTS = [
     writer: "Pete Freedman",
     hasVideo: false,
     featured: false,
-    credit: "Photograph \u2014 Ben Houdijk",
+    credit: "Photograph \u2014 L. Paul Mann",
     pull: "Making it up as he goes along.",
     body: [
       "In the span of a year, improvisational Dallas musician Marc Rebillet went from taking song-topic suggestions from crowds of charitably a dozen on Thursday nights at Uptown\u2019s Common Table to becoming the internet\u2019s favorite manic body-rocker, earning millions of views with each bedroom-recorded jam session he broadcasts via webcam.",
@@ -355,6 +361,7 @@ window.ARTISTS = [
     writer: "Josh Campbell",
     hasVideo: false,
     featured: false,
+    credit: "Photograph \u2014 Jason Janik",
     pull: "A nostalgic masterpiece.",
     body: [
       "With soft, alluring melodies, layered harmonies, intimate textured rhythms, and prominently featured flutes, Midlake burst onto the scene with their second album, The Trials of Van Occupanther. At a time when rock music was running on the fumes of pop-punk and nu-metal, this collection of jazz musicians from Denton unfurled a nostalgic masterpiece, harkening to the late \u201970s era while blending rock, folk, and funk.",
@@ -408,6 +415,7 @@ window.ARTISTS = [
     hasVideo: true,
     video: "3f80880fb8bb250a30bb1a75153ec74e",
     featured: false,
+    credit: "Photograph \u2014 Jason Janik",
     pull: "Bring up a Centro album and you will quickly be their king.",
     body: [
       "If you want to sound like a ball-knower in a room full of musicians, bring up a Centro album. You will quickly be their king.",
@@ -425,6 +433,7 @@ window.ARTISTS = [
     writer: "Jason Janik",
     hasVideo: false,
     featured: false,
+    credit: "Photograph \u2014 Jason Janik",
     pull: "The Dirk Nowitzki of the trumpet.",
     body: [
       "To put it in very Dallas terms, Roy Hargrove, who passed away in 2018, was the Dirk Nowitzki of the trumpet\u2014a Dallas giant responsible for protecting the heritage of his craft and for adapting it to the modern age.",
@@ -442,6 +451,7 @@ window.ARTISTS = [
     writer: "Jeff \u201cSkin\u201d Wade",
     hasVideo: false,
     featured: false,
+    credit: "Photograph \u2014 Jason Janik",
     pull: "Bobby Sessions is just getting started.",
     body: [
       "The story goes like this. Bobby Sessions created buzz and made a name for himself throughout the North Texas scene. Bobby Sessions flashed a dope flow and serious skills when it came to crafting words. Bobby Sessions had a commanding presence and oozed confidence.",
@@ -459,7 +469,7 @@ window.ARTISTS = [
     writer: "Mike Marshall",
     hasVideo: false,
     featured: false,
-    credit: "Photograph \u2014 Nicole Hester/The Tennessean/USA Today",
+    credit: "Photograph \u2014 Nicole Hester / The Tennessean / USA TODAY NETWORK",
     pull: "I\u2019m confident he\u2019ll be conducting that steam engine.",
     body: [
       "When we do this in another 25 years, I fully expect Xavier Landum\u2014aka BigXthaPlug\u2014to crack the top 5 of this list. In a rap world where it feels like it\u2019s all been done before, BigX burst through the door like a juggernaut, and his impact has permeated to the roots of Dallas urban culture just three years since his first studio album release.",
@@ -477,7 +487,7 @@ window.ARTISTS = [
     writer: "Jeff \u201cSkin\u201d Wade",
     hasVideo: false,
     featured: false,
-    credit: "Photograph \u2014 Brian Friedman",
+    credit: "Photograph \u2014 Ben Houdijk",
     pull: "UNT\u2019s lineage of musical excellence.",
     body: [
       "No group epitomizes UNT\u2019s lineage of musical excellence quite like Snarky Puppy. Formed by Michael League in the early 2000s, the jazz-fusion group\u2019s members have included huge touring and session names.",

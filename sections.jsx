@@ -53,6 +53,7 @@ function HeroPhoto() {
         <div className="kicker">No. {cur.rank}</div>
         <p>{cur.name}</p>
       </div>
+      {cur.credit && <p className="hero__photo-credit">{cur.credit}</p>}
     </div>);
 }
 
@@ -81,7 +82,7 @@ function Hero({ onVideo }) {
           <PlayButton size="sm" pulse onClick={() => onVideo({ kicker: "Watch the film", title: "The 25 Most Influential", video: F.heroVideo })} label="Play feature film" />
           <p>{F.byline}</p>
         </div>
-        <p style={{ marginTop: "10px", marginBottom: 0, fontFamily: "var(--sans)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", opacity: 0.5 }}>Photo Illustrations by Mike Marshall</p>
+
       </div>
 
       <HeroPhoto />
