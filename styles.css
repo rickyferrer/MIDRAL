@@ -386,12 +386,13 @@ img { display: block; max-width: 100%; }
 }
 .topbar.show { transform: translateY(0); }
 .topbar__title {
-  font-family: var(--display);
+  font-family: var(--sans);
   text-transform: uppercase;
   font-size: clamp(15px, 1.4vw, 21px);
   letter-spacing: 0.01em;
   color: var(--white);
 }
+.topbar__title { font-weight: 700; }
 .topbar__title b { color: var(--orange); }
 .topbar__right { display: flex; align-items: center; gap: 14px; }
 .topbar__progress {
@@ -642,7 +643,8 @@ section { position: relative; }
   position: relative;
   z-index: 2;
 }
-.divider p {
+.divider p,
+.divider div.reveal.d2 > p {
   position: relative;
   z-index: 2;
   font-family: var(--serif);
@@ -1033,8 +1035,8 @@ image-slot::part(frame) { background: rgba(26, 10, 4, 0.06); }
 .judge__name b { color: var(--ink); display: inline; font-weight: 200; }
 .judge__bio {
   font-family: var(--serif);
-  font-style: italic;
-  font-size: 14px;
+  font-style: normal;
+  font-size: 16px;
   line-height: 1.45;
 }
 .judge__rule { width: 30px; height: 2px; background: var(--ink); margin: 0 0 10px; }

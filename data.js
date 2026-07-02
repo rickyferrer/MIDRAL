@@ -513,6 +513,7 @@ window.STUDIOS = {
     { name: "Modern Electric Sound Recorders", location: "Dallas", op: "Jeff Saenz & Beau Bedford", artists: "Paul Cauthen, Leon Bridges, Nikki Lane" },
     { name: "Furndware Recording Studio", location: "W. Jefferson Blvd.", op: "Patrick Craine", artists: "Mark Lettieri, Eric Roberson" },
     { name: "Alpha Omega Recording Studios", location: "Fort Worth", op: "Al Gibbs", artists: "Shirley Carter, Cotinga, Quimikoz" },
+    { name: "Elmwood Recording", location: "1814 Balboa Dr, Dallas", op: "Alex Bhore", artists: "St. Vincent, Midlake, This Will Destroy You" },
   ],
 };
 

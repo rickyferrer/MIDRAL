@@ -109,7 +109,7 @@ function Divider({ kicker, title, body, ghost, className }) {
       {ghost ? <div className="divider__ghost" aria-hidden="true">{ghost}</div> : null}
       <div className="kicker reveal" style={{ fontSize: "14px" }}>{kicker}</div>
       <h2 className="reveal d1" style={{ fontWeight: "200", letterSpacing: "1.5px" }}>{title}</h2>
-      {body ? <p className="reveal d2">{body}</p> : null}
+      {body ? <div className="reveal d2">{body}</div> : null}
     </section>);
 
 }
@@ -343,7 +343,7 @@ function TopBar({ current, total, onOpenContents }) {
   }, []);
   return (
     <div className={"topbar" + (show ? " show" : "")}>
-      <div className="topbar__title" style={{ fontWeight: "100", letterSpacing: "1.5px" }}>THE <b style={{ fontWeight: "100", letterSpacing: "1.5px" }}>25</b> Most Influential Dallas Recording Artists</div>
+      <div className="topbar__title" style={{ fontWeight: "700", letterSpacing: "1.5px" }}>THE <b style={{ fontWeight: "700", letterSpacing: "1.5px" }}>25</b> Most Influential Dallas Recording Artists</div>
       <div className="topbar__right">
         <span className="topbar__progress">{current ? "No. " + current + " / " + total : "Read the essay"}</span>
         <button className="btn-contents" onClick={onOpenContents}>
