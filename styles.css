@@ -466,7 +466,11 @@ img { display: block; max-width: 100%; }
 }
 .contents__head .display { color: var(--orange); font-weight: 200; font-size: clamp(22px, 3vw, 40px); letter-spacing: 0.06em; }
 .contents__close {
-  background: none;
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 2020;
+  background: rgba(26,10,4,0.5);
   border: 1.5px solid rgba(255,255,255,0.3);
   color: var(--white);
   width: 36px; height: 36px;
@@ -664,7 +668,7 @@ section { position: relative; }
   font-weight: 200;
   text-transform: uppercase;
   letter-spacing: 0.01em;
-  font-size: clamp(36px, 4.8vw, 72px);
+  font-size: clamp(40px, 7vw, 104px);
   line-height: 0.9;
   margin: 0;
   max-width: none;
@@ -977,6 +981,7 @@ image-slot::part(frame) { background: rgba(26, 10, 4, 0.06); }
 .studio__name {
   font-family: var(--sans);
   font-weight: 800;
+  color: #1a0a04;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--blue);
@@ -1188,7 +1193,7 @@ image-slot::part(frame) { background: rgba(26, 10, 4, 0.06); }
   color: var(--ink);
   background: var(--orange);
   border: none;
-  padding: 12px 18px 10px;
+  padding: 8px 13px 7px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -1377,6 +1382,7 @@ image-slot { pointer-events: none !important; }
 .studiomap__name {
   font-family: var(--serif);
   font-weight: 600;
+  color: #1a0a04;
   font-size: clamp(18px, 1.5vw, 23px);
   line-height: 1.08;
   margin-bottom: 4px;
@@ -1479,8 +1485,8 @@ body.no-motion .reveal { opacity: 1 !important; transform: none !important; tran
   .hero__sub { white-space: normal; }
   .hero__photo { position: relative; width: 100%; height: auto; top: auto; right: auto; overflow: visible; padding: 0; order: -1; }
   .hero__photo image-slot { height: 56vw; }
-  .hero__rot { position: relative; width: 100%; height: 56vw; top: auto; right: auto; }
-  .hero__left { min-height: auto; padding-bottom: 36px; }
+  .hero__rot { position: relative; width: 100%; height: 56vw; top: auto; right: auto; flex: none; }
+  .hero__left { min-height: auto; padding-bottom: 36px; text-align: center; display: flex; flex-direction: column; align-items: center; }
   .hero__title { margin-top: clamp(16px, 3vh, 32px); }
   .hero__byline { max-width: 100%; margin-top: clamp(16px, 2.5vh, 32px); }
   .hero__caption { position: static; max-width: none; margin-top: 22px; }
@@ -1497,6 +1503,23 @@ body.no-motion .reveal { opacity: 1 !important; transform: none !important; tran
   .hero__title .display { font-size: clamp(22px, 7.5vw, 36px); }
   .hero__title .line { white-space: normal; }
   .entry__rank { font-size: clamp(52px, 14vw, 80px); }
+}
+
+@media (max-width: 640px) {
+  /* rank + name on one line */
+  .entry__text .reveal:first-child { display: flex; align-items: baseline; gap: 8px; }
+  .entry__rank { font-size: clamp(28px, 8vw, 40px) !important; margin-bottom: 0; line-height: 1; flex-shrink: 0; }
+  /* fix dropcaps on mobile */
+  .intro__body p:first-child::first-letter,
+  .entry__body p:first-child::first-letter {
+    initial-letter: normal;
+    float: none;
+    font-size: 1em;
+    line-height: inherit;
+    padding: 0;
+    margin-right: 0;
+    color: inherit;
+  }
 }
 
 /* ── extra mobile polish ── */

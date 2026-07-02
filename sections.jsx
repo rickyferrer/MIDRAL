@@ -350,7 +350,7 @@ function TopBar({ current, total, onOpenContents }) {
       <div className="topbar__right">
         <span className="topbar__progress">{current ? "No. " + current + " / " + total : "Read the essay"}</span>
         <button className="btn-contents" onClick={onOpenContents}>
-          <span className="bars"><i /><i /><i /></span> Contents
+          <span className="bars"><i /><i /><i /></span>
         </button>
       </div>
     </div>);
@@ -403,8 +403,8 @@ function Contents({ open, onClose, artists }) {
             </div>
           </div>
         </div>
-        <button className="contents__close" onClick={onClose} aria-label="Close contents">&times;</button>
       </div>
+      <button className="contents__close" onClick={onClose} aria-label="Close contents">&times;</button>
       <div className="contents__seclabel">Sections</div>
       <div className="contents__sections">
         <button className="contents__seclink" onClick={() => jump("studios")}>Studios Map</button>
