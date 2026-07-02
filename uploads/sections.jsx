@@ -18,14 +18,7 @@ function PlayButton({ onClick, size, pulse, label }) {
 /* --------------------------------------------------------------- HeroPhoto */
 /* Cover image carousel — rotates through all 25 artist photos */
 function HeroPhoto() {
-  const [artists] = useState(() => {
-    const arr = window.ARTISTS.filter((a) => a.photo).slice();
-    for (let i = arr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    return arr;
-  });
+  const artists = window.ARTISTS.filter((a) => a.photo);
   const [idx, setIdx] = useState(0);
 
   useEffect(() => {
@@ -39,7 +32,7 @@ function HeroPhoto() {
   if (artists.length === 0) {
     return (
       <div className="hero__photo">
-        <div className="hero__rot hero__rot--empty" style={{ width: "100%" }}>
+        <div className="hero__rot hero__rot--empty" style={{ width: "400px" }}>
           <div className="hero__coverhint">
             <div className="kicker">The Cover</div>
             <p>Drop a photo onto any artist below &mdash; the cover rotates through them at random.</p>
@@ -60,7 +53,6 @@ function HeroPhoto() {
         <div className="kicker">No. {cur.rank}</div>
         <p>{cur.name}</p>
       </div>
-      {cur.credit && <p className="hero__photo-credit">{cur.credit}</p>}
     </div>);
 }
 
@@ -89,7 +81,7 @@ function Hero({ onVideo }) {
           <PlayButton size="sm" pulse onClick={() => onVideo({ kicker: "Watch the film", title: "The 25 Most Influential", video: F.heroVideo })} label="Play feature film" />
           <p>{F.byline}</p>
         </div>
-
+        <p style={{ marginTop: "10px", marginBottom: 0, fontFamily: "var(--sans)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", opacity: 0.5 }}>Photo Illustrations by Mike Marshall</p>
       </div>
 
       <HeroPhoto />
@@ -281,7 +273,7 @@ function Judges({ onVideo }) {
               <div className="on-dark">
                 <img src={j.photo || "uploads/judge-" + i + ".webp"} alt={j.first + " " + j.last} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
               </div>
-              <div className="judge__name" style={{ fontSize: "clamp(22px, 3.5vw, 36px)" }}>
+              <div className="judge__name" style={{ fontSize: "36px" }}>
                 {j.first} <b>{j.last}</b>
               </div>
               <div className="judge__rule" />
@@ -316,7 +308,17 @@ function Footer() {
               <h3>The Companion Playlist</h3>
             </div>
           </div>
-          <iframe src="https://embed.tidal.com/playlists/c15dff61-b2ed-4bd5-996b-b463f53f2f87" allow="encrypted-media" allowFullScreen frameBorder="0" style={{ width: "100%", height: "115px", marginTop: "16px", display: "block" }}></iframe>
+          {PLAYLIST.map((tr, i) =>
+          <div className="playlist__track" key={i}>
+              <span className="playlist__num">{i + 1}</span>
+              <div className="playlist__meta">
+                <div className="playlist__song">{tr.song}</div>
+                <div className="playlist__artist">{tr.artist}</div>
+              </div>
+              {i === 0 ? <div className="playlist__bars"><i /><i /><i /><i /></div> : null}
+            </div>
+          )}
+          <p className="playlist__note">Placeholder — a full 25-track playlist (Spotify / Apple Music) drops in here.</p>
         </div>
         <div className="display">People in<br />Our Ears</div>
         <p>The 25 Most Influential Dallas Recording Artists of the Last 25 Years from the July 2026 Issue of D Magazine. Words by Mike Marshall, Bethany Erickson, Jeff “Skin” Wade, Pete Freedman, Bobby Sessions, Chris Holt, Josh Campbell, Kevin Turner, and Jason Janik.
@@ -343,11 +345,11 @@ function TopBar({ current, total, onOpenContents }) {
   }, []);
   return (
     <div className={"topbar" + (show ? " show" : "")}>
-      <div className="topbar__title" style={{ fontWeight: "100", letterSpacing: "1.5px" }}>THE <b style={{ fontWeight: "100", letterSpacing: "1.5px" }}>25</b> Most Influential Dallas Recording Artists</div>
+      <div className="topbar__title" style={{ fontWeight: "100", letterSpacing: "1.5px" }}>THE <b style={{ fontWeight: "100", letterSpacing: "1.5px" }}>25</b> &middot; Most Influential Dallas Recording Artists</div>
       <div className="topbar__right">
         <span className="topbar__progress">{current ? "No. " + current + " / " + total : "Read the essay"}</span>
         <button className="btn-contents" onClick={onOpenContents}>
-          <span className="bars"><i /><i /><i /></span><span className="btn-contents__label"> Contents</span>
+          <span className="bars"><i /><i /><i /></span> Contents
         </button>
       </div>
     </div>);
@@ -400,8 +402,8 @@ function Contents({ open, onClose, artists }) {
             </div>
           </div>
         </div>
+        <button className="contents__close" onClick={onClose} aria-label="Close contents">&times;</button>
       </div>
-      <button className="contents__close" onClick={onClose} aria-label="Close contents">&times;</button>
       <div className="contents__seclabel">Sections</div>
       <div className="contents__sections">
         <button className="contents__seclink" onClick={() => jump("studios")}>Studios Map</button>
@@ -410,7 +412,7 @@ function Contents({ open, onClose, artists }) {
         <a className="contents__seclink" href="https://www.dmagazine.com/arts-entertainment/2026/07/rising-dallas-musicians" target="_blank" rel="noreferrer">Who's Next? ↗</a>
         <a className="contents__seclink" href="https://www.dmagazine.com/assets/forms/peoples-choice-dallas-top-5-influential-music-artists/" target="_blank" rel="noreferrer">Show Us Your List ↗</a>
         <a className="contents__seclink" href="https://www.dmagazine.com/guides/dallas-concert-event-calendar/" target="_blank" rel="noreferrer">Concert Calendar ↗</a>
-
+        <a className="contents__seclink" href="https://www.dmagazine.com/interactive/best-music-venues/" target="_blank" rel="noreferrer">Best Venues Voting ↗</a>
       </div>
       <div className="contents__seclabel">The 25, Ranked</div>
       <div className="contents__list">
