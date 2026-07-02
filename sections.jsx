@@ -309,17 +309,7 @@ function Footer() {
               <h3>The Companion Playlist</h3>
             </div>
           </div>
-          {PLAYLIST.map((tr, i) =>
-          <div className="playlist__track" key={i}>
-              <span className="playlist__num">{i + 1}</span>
-              <div className="playlist__meta">
-                <div className="playlist__song">{tr.song}</div>
-                <div className="playlist__artist">{tr.artist}</div>
-              </div>
-              {i === 0 ? <div className="playlist__bars"><i /><i /><i /><i /></div> : null}
-            </div>
-          )}
-          <p className="playlist__note">Placeholder — a full 25-track playlist (Spotify / Apple Music) drops in here.</p>
+          <iframe src="https://embed.tidal.com/playlists/c15dff61-b2ed-4bd5-996b-b463f53f2f87" allow="encrypted-media" allowFullScreen frameBorder="0" style={{ width: "100%", height: "115px", marginTop: "16px", display: "block" }}></iframe>
         </div>
         <div className="display">People in<br />Our Ears</div>
         <p>The 25 Most Influential Dallas Recording Artists of the Last 25 Years from the July 2026 Issue of D Magazine. Words by Mike Marshall, Bethany Erickson, Jeff “Skin” Wade, Pete Freedman, Bobby Sessions, Chris Holt, Josh Campbell, Kevin Turner, and Jason Janik.
