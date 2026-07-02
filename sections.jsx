@@ -350,7 +350,7 @@ function TopBar({ current, total, onOpenContents }) {
       <div className="topbar__right">
         <span className="topbar__progress">{current ? "No. " + current + " / " + total : "Read the essay"}</span>
         <button className="btn-contents" onClick={onOpenContents}>
-          <span className="bars"><i /><i /><i /></span>
+          <span className="bars"><i /><i /><i /></span><span className="btn-contents__label"> Contents</span>
         </button>
       </div>
     </div>);
@@ -413,7 +413,7 @@ function Contents({ open, onClose, artists }) {
         <a className="contents__seclink" href="https://www.dmagazine.com/arts-entertainment/2026/07/rising-dallas-musicians" target="_blank" rel="noreferrer">Who's Next? ↗</a>
         <a className="contents__seclink" href="https://www.dmagazine.com/assets/forms/peoples-choice-dallas-top-5-influential-music-artists/" target="_blank" rel="noreferrer">Show Us Your List ↗</a>
         <a className="contents__seclink" href="https://www.dmagazine.com/guides/dallas-concert-event-calendar/" target="_blank" rel="noreferrer">Concert Calendar ↗</a>
-        <a className="contents__seclink" href="https://www.dmagazine.com/interactive/best-music-venues/" target="_blank" rel="noreferrer">Best Venues Voting ↗</a>
+        <a className="contents__seclink" href="https://www.dmagazine.com/interactive/top-dallas-music-venue" target="_blank" rel="noreferrer">Vote on Top Venues ↗</a>
       </div>
       <div className="contents__seclabel">The 25, Ranked</div>
       <div className="contents__list">
