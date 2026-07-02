@@ -336,7 +336,7 @@ function TopBar({ current, total, onOpenContents }) {
   }, []);
   return (
     <div className={"topbar" + (show ? " show" : "")}>
-      <div className="topbar__title" style={{ fontWeight: "100", letterSpacing: "1.5px" }}>THE <b style={{ fontWeight: "100", letterSpacing: "1.5px" }}>25</b> &middot; Most Influential Dallas Recording Artists</div>
+      <div className="topbar__title" style={{ fontWeight: "100", letterSpacing: "1.5px" }}>THE <b style={{ fontWeight: "100", letterSpacing: "1.5px" }}>25</b> Most Influential Dallas Recording Artists</div>
       <div className="topbar__right">
         <span className="topbar__progress">{current ? "No. " + current + " / " + total : "Read the essay"}</span>
         <button className="btn-contents" onClick={onOpenContents}>

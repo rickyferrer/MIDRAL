@@ -379,6 +379,7 @@ window.ARTISTS = [
     writer: "Mike Marshall",
     hasVideo: false,
     featured: false,
+    credit: "Photograph \u2014 Jason Janik",
     pull: "Crockett is bona fide. He\u2019s got the hat and the cattle.",
     body: [
       "You just woke up on a spaceship shooting toward Earth from 230,000 miles away, having slingshotted around the moon. What song are you cranking? \u201CLonesome Drifter\u201D by Charley Crockett. That actually happened, with the crew of Artemis II.",
