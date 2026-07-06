@@ -7,7 +7,7 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/ {
   "primary": "#e9531e",
   "accent": "#f2c200",
   "display": "Cinderblock",
-  "order": "ranked",
+  "order": "countdown",
   "genre": "All genres",
   "motion": true
 } /*EDITMODE-END*/;
