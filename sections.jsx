@@ -323,14 +323,13 @@ function VideosOverlay({ open, onClose }) {
       <div onClick={onClick}
         onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
         style={{ background: hov ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "3px", overflow: "hidden", cursor: "pointer", transform: hov ? "translateY(-2px)" : "none", transition: "background 0.2s, transform 0.2s" }}>
-        <div style={{ position: "relative", aspectRatio: "16/9", background: "#140808", overflow: "hidden" }}>
+        <div style={{ position: "relative", aspectRatio: "2/3", background: "#140808", overflow: "hidden" }}>
           <img src={`https://videodelivery.net/${video}/thumbnails/thumbnail.jpg?time=3s&height=400`} alt={title} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", transform: hov ? "scale(1.04)" : "scale(1)", transition: "transform 0.4s" }} />
           <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <div style={{ width: 48, height: 48, borderRadius: "50%", background: "var(--blue)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 12px rgba(0,0,0,0.5)", transform: hov ? "scale(1.1)" : "scale(1)", transition: "transform 0.2s" }}>
               <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><polygon points="5,3 17,10 5,17" fill="white" /></svg>
             </div>
           </div>
-          {rank && <div style={{ position: "absolute", top: 10, left: 10, fontFamily: "var(--display)", fontSize: "13px", fontWeight: 700, color: "var(--white)", background: "var(--orange)", padding: "2px 7px", lineHeight: 1.4 }}>{String(rank).padStart(2,"0")}</div>}
         </div>
         <div style={{ padding: "16px 18px 20px" }}>
           <div style={kickerStyle}>{kicker}</div>
@@ -391,7 +390,7 @@ function VideosOverlay({ open, onClose }) {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 20 }}>
             {["Why Denton, TX Produces So Much Great Music", "Deep Ellum: The Scene That Built Dallas", "The Studio Culture of North Texas"].map((t) => (
               <div key={t} style={{ opacity: 0.4, borderRadius: 3, overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)" }}>
-                <div style={{ aspectRatio: "16/9", background: "repeating-linear-gradient(45deg,#1a0a04,#1a0a04 10px,#200d06 10px,#200d06 20px)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <div style={{ aspectRatio: "2/3", background: "repeating-linear-gradient(45deg,#1a0a04,#1a0a04 10px,#200d06 10px,#200d06 20px)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <span style={{ fontFamily: "var(--sans)", fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "rgba(255,255,255,0.3)" }}>Coming Soon</span>
                 </div>
                 <div style={{ padding: "16px 18px 20px" }}>
