@@ -294,6 +294,52 @@ function Judges({ onVideo }) {
 
 }
 
+/* ----------------------------------------------------------------- Videos Overlay */
+function VideosOverlay({ open, onClose }) {
+  useEffect(() => {
+    const handler = (e) => { if (e.key === "Escape") onClose(); };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [onClose]);
+  return (
+    <div style={{
+      position: "fixed", inset: 0, zIndex: 3000,
+      background: "var(--ink)",
+      display: "flex", flexDirection: "column",
+      transform: open ? "translateX(0)" : "translateX(100%)",
+      transition: "transform 0.35s cubic-bezier(0.4,0,0.2,1)",
+    }}>
+      <div style={{
+        display: "flex", alignItems: "center", gap: "16px",
+        padding: "0 clamp(16px,4vw,56px)", height: "52px", flexShrink: 0,
+        borderBottom: "1px solid rgba(255,255,255,0.08)",
+      }}>
+        <button onClick={onClose} style={{
+          background: "none", border: "none", cursor: "pointer",
+          color: "rgba(255,255,255,0.5)", display: "flex", alignItems: "center",
+          gap: "6px", fontFamily: "var(--sans)", fontSize: "13px", fontWeight: 700,
+          textTransform: "uppercase", letterSpacing: "0.08em", padding: 0,
+        }}
+          onMouseEnter={e => e.currentTarget.style.color="#fff"}
+          onMouseLeave={e => e.currentTarget.style.color="rgba(255,255,255,0.5)"}
+          aria-label="Close videos">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          The Countdown
+        </button>
+        <div style={{ width: 1, height: 20, background: "rgba(255,255,255,0.15)" }}></div>
+        <div style={{ fontFamily: "var(--sans)", fontSize: "13px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--white)" }}>THE <span style={{ color: "var(--orange)" }}>25</span> — Videos</div>
+      </div>
+      <iframe
+        src={open ? "videos.html" : ""}
+        title="Videos"
+        style={{ flex: 1, border: "none", width: "100%" }}
+      />
+    </div>
+  );
+}
+
 /* ------------------------------------------------------------------- Footer */
 const PLAYLIST = [
 { song: "On & On", artist: "Erykah Badu" },
@@ -370,7 +416,7 @@ function ScrollProgress() {
 }
 
 /* ------------------------------------------------------------- Contents */
-function Contents({ open, onClose, artists }) {
+function Contents({ open, onClose, artists, onVideos }) {
   const jump = (id) => {
     onClose();
     setTimeout(() => {
@@ -404,7 +450,7 @@ function Contents({ open, onClose, artists }) {
       <button className="contents__close" onClick={onClose} aria-label="Close contents">&times;</button>
       <div className="contents__seclabel">Sections</div>
       <div className="contents__sections">
-        <a className="contents__seclink" href="videos.html">Videos ↗</a>
+        <button className="contents__seclink" onClick={onVideos}>Videos</button>
         <button className="contents__seclink" onClick={() => jump("studios")}>Studios Map</button>
         <button className="contents__seclink" onClick={() => jump("judges")}>The Judges</button>
         <button className="contents__seclink" onClick={() => jump("playlist")}>Playlist</button>
@@ -576,5 +622,5 @@ function VideoModal({ data, onClose }) {
 Object.assign(window, {
   PlayButton, Hero, HeroPhoto, Divider, IntroEssay, Studios, Judges,
   Footer, TopBar, ScrollProgress, Contents, VideoModal, NewsletterSignup,
-  MissEllieHorizontal
+  MissEllieHorizontal, VideosOverlay
 });

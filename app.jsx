@@ -22,6 +22,7 @@ const DISPLAY_FONTS = {
 function App() {
   const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
   const [video, setVideo] = useState(null);
+  const [videosOpen, setVideosOpen] = useState(false);
   const [contentsOpen, setContentsOpen] = useState(false);
   const [current, setCurrent] = useState(0);
 
@@ -68,12 +69,14 @@ function App() {
   }, [listKey]);
 
   const openVideo = (d) => setVideo(d);
+  const openVideos = () => setVideosOpen(true);
+  window.__openVideos = openVideos;
 
   return (
     <>
       <ScrollProgress />
       <TopBar current={current} total={artists.length} onOpenContents={() => setContentsOpen(true)} />
-      <Contents open={contentsOpen} onClose={() => setContentsOpen(false)} artists={artists} />
+      <Contents open={contentsOpen} onClose={() => setContentsOpen(false)} artists={artists} onVideos={() => { setContentsOpen(false); setVideosOpen(true); }} />
 
       <Hero onVideo={openVideo} />
       <IntroEssay onVideo={openVideo} />
@@ -82,7 +85,7 @@ function App() {
         className="sec-ink"
         kicker="Our Final List"
         title={t.order === "countdown" ? "The Countdown" : "The Influential 25"}
-        body={<><p style={{margin:"0 0 20px"}}>Ranked by 12 judges across a quarter century of North Texas sound. Wherever you see the{" "}<span style={{display:"inline-flex",alignItems:"center",verticalAlign:"middle",width:"22px",height:"22px",borderRadius:"50%",background:"var(--blue)",justifyContent:"center",flexShrink:0,boxShadow:"0 2px 8px rgba(0,0,0,0.25)"}}><span style={{width:0,height:0,marginLeft:"3px",borderStyle:"solid",borderWidth:"5px 0 5px 8px",borderColor:"transparent transparent transparent #fff"}}></span></span>{" "}there's a video to watch.</p><div style={{display:"flex",gap:"0",flexWrap:"wrap",borderTop:"1px solid rgba(255,255,255,0.15)"}}><a href="#studios" style={{fontFamily:"var(--sans)",fontWeight:"600",fontSize:"13px",textTransform:"uppercase",letterSpacing:"0.08em",textDecoration:"none",color:"var(--white)",padding:"12px 20px 12px 0",borderRight:"1px solid rgba(255,255,255,0.15)",marginRight:"20px",opacity:0.75}}>Studios Map ↓</a><a href="#judges" style={{fontFamily:"var(--sans)",fontWeight:"600",fontSize:"13px",textTransform:"uppercase",letterSpacing:"0.08em",textDecoration:"none",color:"var(--white)",padding:"12px 20px 12px 0",borderRight:"1px solid rgba(255,255,255,0.15)",marginRight:"20px",opacity:0.75}}>The Judges ↓</a><a href="#playlist" style={{fontFamily:"var(--sans)",fontWeight:"600",fontSize:"13px",textTransform:"uppercase",letterSpacing:"0.08em",textDecoration:"none",color:"var(--white)",padding:"12px 0",opacity:0.75}}>Playlist ↓</a><a href="videos.html" style={{fontFamily:"var(--sans)",fontWeight:"600",fontSize:"13px",textTransform:"uppercase",letterSpacing:"0.08em",textDecoration:"none",color:"var(--white)",padding:"12px 0 12px 20px",borderLeft:"1px solid rgba(255,255,255,0.15)",marginLeft:"0px",opacity:0.75}}>All Videos →</a></div></>}
+        body={<><p style={{margin:"0 0 20px"}}>Ranked by 12 judges across a quarter century of North Texas sound. Wherever you see the{" "}<span style={{display:"inline-flex",alignItems:"center",verticalAlign:"middle",width:"22px",height:"22px",borderRadius:"50%",background:"var(--blue)",justifyContent:"center",flexShrink:0,boxShadow:"0 2px 8px rgba(0,0,0,0.25)"}}><span style={{width:0,height:0,marginLeft:"3px",borderStyle:"solid",borderWidth:"5px 0 5px 8px",borderColor:"transparent transparent transparent #fff"}}></span></span>{" "}there's a video to watch.</p><div style={{display:"flex",gap:"0",flexWrap:"wrap",borderTop:"1px solid rgba(255,255,255,0.15)"}}><a href="#studios" style={{fontFamily:"var(--sans)",fontWeight:"600",fontSize:"13px",textTransform:"uppercase",letterSpacing:"0.08em",textDecoration:"none",color:"var(--white)",padding:"12px 20px 12px 0",borderRight:"1px solid rgba(255,255,255,0.15)",marginRight:"20px",opacity:0.75}}>Studios Map ↓</a><a href="#judges" style={{fontFamily:"var(--sans)",fontWeight:"600",fontSize:"13px",textTransform:"uppercase",letterSpacing:"0.08em",textDecoration:"none",color:"var(--white)",padding:"12px 20px 12px 0",borderRight:"1px solid rgba(255,255,255,0.15)",marginRight:"20px",opacity:0.75}}>The Judges ↓</a><a href="#playlist" style={{fontFamily:"var(--sans)",fontWeight:"600",fontSize:"13px",textTransform:"uppercase",letterSpacing:"0.08em",textDecoration:"none",color:"var(--white)",padding:"12px 20px 12px 0",borderRight:"1px solid rgba(255,255,255,0.15)",marginRight:"20px",opacity:0.75}}>Playlist ↓</a><button onClick={() => window.__openVideos && window.__openVideos()} style={{background:"none",border:"none",cursor:"pointer",fontFamily:"var(--sans)",fontWeight:"600",fontSize:"13px",textTransform:"uppercase",letterSpacing:"0.08em",color:"var(--white)",padding:"12px 0",opacity:0.75}}>All Videos →</button></div></>}
         ghost={t.order === "countdown" ? "25" : "1"}
       />
 
@@ -111,6 +114,7 @@ function App() {
       <Judges onVideo={openVideo} />
       <Footer />
 
+      <VideosOverlay open={videosOpen} onClose={() => setVideosOpen(false)} />
       <VideoModal data={video} onClose={() => setVideo(null)} />
 
       <TweaksPanel title="Tweaks">

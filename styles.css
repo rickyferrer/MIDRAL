@@ -651,7 +651,7 @@ section { position: relative; }
   font-size: clamp(17px, 1.5vw, 22px);
   line-height: 1.5;
   max-width: 56ch;
-  margin: 26px 0 0;
+  margin: 42px 0 0;
 }
 
 /* ===========================================================================
