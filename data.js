@@ -13,7 +13,7 @@ window.FEATURE = {
     "By Mike Marshall, Bethany Erickson, Jeff \u201cSkin\u201d Wade, Pete Freedman, Bobby Sessions, Chris Holt, Josh Campbell, Kevin Turner, and Jason Janik",
   issue: "D Magazine \u2014 July 2026",
   // Drop a hero film here (YouTube ID or a local mp4 path). Leave null for the placeholder state.
-  heroVideo: "61efa440cc230ba46978aa576bd20b25",
+  heroVideo: "807debd83a74defe5f39dbd8a8762af8",
 };
 
 window.INTRO = {
@@ -125,7 +125,7 @@ window.ARTISTS = [
     genre: "Americana",
     era: "1993\u2013present",
     place: "Deep Ellum",
-    writer: "Jeff \u201cSkin\u201d Wade",
+    writer: "Pete Freedman",
     hasVideo: true,
     video: "f4bc06cb09af02bec6096200d7da5848",
     featured: false,
@@ -164,7 +164,8 @@ window.ARTISTS = [
     era: "1989\u2013present",
     place: "Dallas",
     writer: "Jeff \u201cSkin\u201d Wade",
-    hasVideo: false,
+    hasVideo: true,
+    video: "0682a2d6c4bde7c854e2caf84916d094",
     featured: false,
     credit: "Photograph \u2014 Peter Serocki",
     pull: "It was clear they were really good.",

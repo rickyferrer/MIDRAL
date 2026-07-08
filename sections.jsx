@@ -404,6 +404,7 @@ function Contents({ open, onClose, artists }) {
       <button className="contents__close" onClick={onClose} aria-label="Close contents">&times;</button>
       <div className="contents__seclabel">Sections</div>
       <div className="contents__sections">
+        <a className="contents__seclink" href="videos.html">Videos ↗</a>
         <button className="contents__seclink" onClick={() => jump("studios")}>Studios Map</button>
         <button className="contents__seclink" onClick={() => jump("judges")}>The Judges</button>
         <button className="contents__seclink" onClick={() => jump("playlist")}>Playlist</button>
