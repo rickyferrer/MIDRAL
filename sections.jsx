@@ -317,13 +317,14 @@ function VideosOverlay({ open, onClose }) {
   const titleStyle = { fontFamily: "var(--display)", fontWeight: 300, fontSize: "40px", lineHeight: 1.05, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--white)", margin: "0 0 6px" };
   const kickerStyle = { fontFamily: "var(--sans)", fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.14em", color: "var(--orange)", marginBottom: "6px" };
 
-  function ThumbCard({ kicker, title, video, rank, onClick }) {
+  function ThumbCard({ kicker, title, video, rank, aspect, onClick }) {
     const [hov, setHov] = useState(false);
+    const ar = aspect || "2/3";
     return (
       <div onClick={onClick}
         onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
         style={{ background: hov ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "3px", overflow: "hidden", cursor: "pointer", transform: hov ? "translateY(-2px)" : "none", transition: "background 0.2s, transform 0.2s" }}>
-        <div style={{ position: "relative", aspectRatio: "2/3", background: "#140808", overflow: "hidden" }}>
+        <div style={{ position: "relative", aspectRatio: ar, background: "#140808", overflow: "hidden" }}>
           <img src={`https://videodelivery.net/${video}/thumbnails/thumbnail.jpg?time=3s&height=400`} alt={title} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", transform: hov ? "scale(1.04)" : "scale(1)", transition: "transform 0.4s" }} />
           <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <div style={{ width: 48, height: 48, borderRadius: "50%", background: "var(--blue)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 12px rgba(0,0,0,0.5)", transform: hov ? "scale(1.1)" : "scale(1)", transition: "transform 0.2s" }}>
@@ -374,30 +375,21 @@ function VideosOverlay({ open, onClose }) {
           </div>
         </div>
 
-        {/* Artist Bios */}
+        {/* In Conversation */}
         <div style={{ marginBottom: "clamp(48px,6vw,80px)" }}>
+          <SectionHead label="In Conversation" title="In Conversation" count="2 videos" />
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: 20 }}>
+            <ThumbCard kicker="In Conversation" title="DJ Sober on the Importance of Curation" video="c36a26bad23f556450b56c51797a91f8" aspect="16/9" onClick={() => setModal({ kicker: "In Conversation", title: "DJ Sober on the Importance of Curation", video: "c36a26bad23f556450b56c51797a91f8" })} />
+            <ThumbCard kicker="In Conversation" title="Ken Bethea of Old 97’s on the Death of Deep Ellum" video="0a098645f612eba39cdb82eba6657d67" aspect="16/9" onClick={() => setModal({ kicker: "In Conversation", title: "Ken Bethea of Old 97’s on the Death of Deep Ellum", video: "0a098645f612eba39cdb82eba6657d67" })} />
+          </div>
+        </div>
+
+        {/* Artist Bios */}
+        <div>
           <SectionHead label="Profiles" title="Artist Bios" count={`${artistVideos.length} videos`} />
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 20 }}>
             {artistVideos.map((a) => (
               <ThumbCard key={a.rank} kicker={`No. ${a.rank} — ${a.genre}`} title={a.name} video={a.video} rank={a.rank} onClick={() => setModal({ kicker: `No. ${a.rank}`, title: a.name, video: a.video })} />
-            ))}
-          </div>
-        </div>
-
-        {/* In Conversation */}
-        <div>
-          <SectionHead label="Coming Soon" title="In Conversation" />
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 20 }}>
-            {["Why Denton, TX Produces So Much Great Music", "Deep Ellum: The Scene That Built Dallas", "The Studio Culture of North Texas"].map((t) => (
-              <div key={t} style={{ opacity: 0.4, borderRadius: 3, overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)" }}>
-                <div style={{ aspectRatio: "2/3", background: "repeating-linear-gradient(45deg,#1a0a04,#1a0a04 10px,#200d06 10px,#200d06 20px)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <span style={{ fontFamily: "var(--sans)", fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "rgba(255,255,255,0.3)" }}>Coming Soon</span>
-                </div>
-                <div style={{ padding: "16px 18px 20px" }}>
-                  <div style={kickerStyle}>In Conversation</div>
-                  <p style={titleStyle}>{t}</p>
-                </div>
-              </div>
             ))}
           </div>
         </div>
