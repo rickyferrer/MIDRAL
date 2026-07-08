@@ -296,46 +296,131 @@ function Judges({ onVideo }) {
 
 /* ----------------------------------------------------------------- Videos Overlay */
 function VideosOverlay({ open, onClose }) {
+  const [modal, setModal] = useState(null);
+
   useEffect(() => {
-    const handler = (e) => { if (e.key === "Escape") onClose(); };
+    const handler = (e) => { if (e.key === "Escape") { if (modal) setModal(null); else onClose(); } };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [onClose]);
+  }, [onClose, modal]);
+
+  // Prevent body scroll when open
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
+  const F = window.FEATURE;
+  const artistVideos = window.ARTISTS.filter((a) => a.hasVideo && a.video && a.name !== "Centro-Matic");
+
+  const linkStyle = { fontFamily: "var(--sans)", fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.14em", color: "var(--orange)", marginBottom: "8px", display: "block" };
+  const titleStyle = { fontFamily: "var(--display)", fontWeight: 300, fontSize: "40px", lineHeight: 1.05, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--white)", margin: "0 0 6px" };
+  const kickerStyle = { fontFamily: "var(--sans)", fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.14em", color: "var(--orange)", marginBottom: "6px" };
+
+  function ThumbCard({ kicker, title, video, rank, onClick }) {
+    const [hov, setHov] = useState(false);
+    return (
+      <div onClick={onClick}
+        onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
+        style={{ background: hov ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "3px", overflow: "hidden", cursor: "pointer", transform: hov ? "translateY(-2px)" : "none", transition: "background 0.2s, transform 0.2s" }}>
+        <div style={{ position: "relative", aspectRatio: "16/9", background: "#140808", overflow: "hidden" }}>
+          <img src={`https://videodelivery.net/${video}/thumbnails/thumbnail.jpg?time=3s&height=400`} alt={title} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", transform: hov ? "scale(1.04)" : "scale(1)", transition: "transform 0.4s" }} />
+          <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <div style={{ width: 48, height: 48, borderRadius: "50%", background: "var(--blue)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 12px rgba(0,0,0,0.5)", transform: hov ? "scale(1.1)" : "scale(1)", transition: "transform 0.2s" }}>
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><polygon points="5,3 17,10 5,17" fill="white" /></svg>
+            </div>
+          </div>
+          {rank && <div style={{ position: "absolute", top: 10, left: 10, fontFamily: "var(--display)", fontSize: "13px", fontWeight: 700, color: "var(--white)", background: "var(--orange)", padding: "2px 7px", lineHeight: 1.4 }}>{String(rank).padStart(2,"0")}</div>}
+        </div>
+        <div style={{ padding: "16px 18px 20px" }}>
+          <div style={kickerStyle}>{kicker}</div>
+          <p style={titleStyle}>{title}</p>
+        </div>
+      </div>
+    );
+  }
+
+  function SectionHead({ label, title, count }) {
+    return (
+      <div style={{ display: "flex", alignItems: "baseline", gap: 16, marginBottom: 28, paddingBottom: 14, borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+        <span style={{ fontFamily: "var(--sans)", fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.14em", color: "var(--orange)" }}>{label}</span>
+        <span style={{ fontFamily: "var(--display)", fontSize: "clamp(28px,3.5vw,46px)", fontWeight: 300, color: "var(--white)", lineHeight: 1, textTransform: "uppercase" }}>{title}</span>
+        {count && <span style={{ fontFamily: "var(--sans)", fontSize: "12px", color: "rgba(255,255,255,0.3)", marginLeft: "auto" }}>{count}</span>}
+      </div>
+    );
+  }
+
   return (
-    <div style={{
-      position: "fixed", inset: 0, zIndex: 3000,
-      background: "var(--ink)",
-      display: "flex", flexDirection: "column",
-      transform: open ? "translateX(0)" : "translateX(100%)",
-      transition: "transform 0.35s cubic-bezier(0.4,0,0.2,1)",
-    }}>
-      <div style={{
-        display: "flex", alignItems: "center", gap: "16px",
-        padding: "0 clamp(16px,4vw,56px)", height: "52px", flexShrink: 0,
-        borderBottom: "1px solid rgba(255,255,255,0.08)",
-      }}>
-        <button onClick={onClose} style={{
-          background: "none", border: "none", cursor: "pointer",
-          color: "rgba(255,255,255,0.5)", display: "flex", alignItems: "center",
-          gap: "6px", fontFamily: "var(--sans)", fontSize: "13px", fontWeight: 700,
-          textTransform: "uppercase", letterSpacing: "0.08em", padding: 0,
-        }}
-          onMouseEnter={e => e.currentTarget.style.color="#fff"}
-          onMouseLeave={e => e.currentTarget.style.color="rgba(255,255,255,0.5)"}
-          aria-label="Close videos">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+    <div style={{ position: "fixed", inset: 0, zIndex: 3000, background: "var(--ink)", display: "flex", flexDirection: "column", transform: open ? "translateX(0)" : "translateX(100%)", transition: "transform 0.35s cubic-bezier(0.4,0,0.2,1)" }}>
+
+      {/* Nav */}
+      <div style={{ display: "flex", alignItems: "center", gap: 16, padding: "0 clamp(16px,4vw,56px)", height: 52, flexShrink: 0, borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+        <button onClick={onClose} style={{ background: "none", border: "none", cursor: "pointer", color: "rgba(255,255,255,0.5)", display: "flex", alignItems: "center", gap: 6, fontFamily: "var(--sans)", fontSize: "13px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", padding: 0 }}
+          onMouseEnter={e => e.currentTarget.style.color="#fff"} onMouseLeave={e => e.currentTarget.style.color="rgba(255,255,255,0.5)"} aria-label="Close videos">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
           The Countdown
         </button>
         <div style={{ width: 1, height: 20, background: "rgba(255,255,255,0.15)" }}></div>
         <div style={{ fontFamily: "var(--sans)", fontSize: "13px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--white)" }}>THE <span style={{ color: "var(--orange)" }}>25</span> — Videos</div>
       </div>
-      <iframe
-        src={open ? "videos.html" : ""}
-        title="Videos"
-        style={{ flex: 1, border: "none", width: "100%" }}
-      />
+
+      {/* Scrollable body */}
+      <div style={{ flex: 1, overflowY: "auto", padding: "clamp(32px,5vw,64px) clamp(16px,4vw,56px) 96px" }}>
+
+        {/* The Film */}
+        <div style={{ marginBottom: "clamp(48px,6vw,80px)" }}>
+          <SectionHead label="D Magazine — July 2026" title="The 25 Most Influential Dallas Recording Artists" />
+          <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", background: "#000" }}>
+            {open && <iframe src={`https://iframe.cloudflarestream.com/${F.heroVideo}`} title="The 25 Most Influential Dallas Recording Artists" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none" }} />}
+          </div>
+        </div>
+
+        {/* Artist Bios */}
+        <div style={{ marginBottom: "clamp(48px,6vw,80px)" }}>
+          <SectionHead label="Profiles" title="Artist Bios" count={`${artistVideos.length} videos`} />
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 20 }}>
+            {artistVideos.map((a) => (
+              <ThumbCard key={a.rank} kicker={`No. ${a.rank} — ${a.genre}`} title={a.name} video={a.video} rank={a.rank} onClick={() => setModal({ kicker: `No. ${a.rank}`, title: a.name, video: a.video })} />
+            ))}
+          </div>
+        </div>
+
+        {/* In Conversation */}
+        <div>
+          <SectionHead label="Coming Soon" title="In Conversation" />
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 20 }}>
+            {["Why Denton, TX Produces So Much Great Music", "Deep Ellum: The Scene That Built Dallas", "The Studio Culture of North Texas"].map((t) => (
+              <div key={t} style={{ opacity: 0.4, borderRadius: 3, overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)" }}>
+                <div style={{ aspectRatio: "16/9", background: "repeating-linear-gradient(45deg,#1a0a04,#1a0a04 10px,#200d06 10px,#200d06 20px)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <span style={{ fontFamily: "var(--sans)", fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "rgba(255,255,255,0.3)" }}>Coming Soon</span>
+                </div>
+                <div style={{ padding: "16px 18px 20px" }}>
+                  <div style={kickerStyle}>In Conversation</div>
+                  <p style={titleStyle}>{t}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Video modal */}
+      {modal && (
+        <div onClick={() => setModal(null)} style={{ position: "absolute", inset: 0, zIndex: 100, background: "rgba(10,3,1,0.95)", display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
+          <div style={{ width: "100%", maxWidth: 960 }} onClick={e => e.stopPropagation()}>
+            <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 12, gap: 16 }}>
+              <div>
+                <div style={kickerStyle}>{modal.kicker}</div>
+                <h3 style={{ fontFamily: "var(--display)", fontSize: "clamp(18px,2.5vw,30px)", fontWeight: 300, textTransform: "uppercase", color: "var(--white)", margin: 0 }}>{modal.title}</h3>
+              </div>
+              <button onClick={() => setModal(null)} style={{ background: "none", border: "none", cursor: "pointer", color: "rgba(255,255,255,0.5)", fontSize: 28, lineHeight: 1, padding: 0 }} onMouseEnter={e => e.currentTarget.style.color="#fff"} onMouseLeave={e => e.currentTarget.style.color="rgba(255,255,255,0.5)"} aria-label="Close">&times;</button>
+            </div>
+            <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", background: "#000" }}>
+              <iframe src={`https://iframe.cloudflarestream.com/${modal.video}?autoplay=true`} title={modal.title} allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none" }} />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
