@@ -69,14 +69,27 @@ function App() {
   }, [listKey]);
 
   const openVideo = (d) => setVideo(d);
-  const openVideos = () => setVideosOpen(true);
+  const openVideos = () => { setVideosOpen(true); if (location.hash !== "#videos") history.pushState(null, "", "#videos"); };
+  const closeVideos = () => { setVideosOpen(false); if (location.hash === "#videos") history.pushState(null, "", location.pathname + location.search); };
   window.__openVideos = openVideos;
+
+  // ---- deep link: #videos opens the overlay ----
+  useEffect(() => {
+    const checkHash = () => setVideosOpen(location.hash === "#videos");
+    checkHash();
+    window.addEventListener("hashchange", checkHash);
+    window.addEventListener("popstate", checkHash);
+    return () => {
+      window.removeEventListener("hashchange", checkHash);
+      window.removeEventListener("popstate", checkHash);
+    };
+  }, []);
 
   return (
     <>
       <ScrollProgress />
       <TopBar current={current} total={artists.length} onOpenContents={() => setContentsOpen(true)} />
-      <Contents open={contentsOpen} onClose={() => setContentsOpen(false)} artists={artists} onVideos={() => { setContentsOpen(false); setVideosOpen(true); }} />
+      <Contents open={contentsOpen} onClose={() => setContentsOpen(false)} artists={artists} onVideos={() => { setContentsOpen(false); openVideos(); }} />
 
       <Hero onVideo={openVideo} />
       <IntroEssay onVideo={openVideo} />
@@ -114,7 +127,7 @@ function App() {
       <Judges onVideo={openVideo} />
       <Footer />
 
-      <VideosOverlay open={videosOpen} onClose={() => setVideosOpen(false)} />
+      <VideosOverlay open={videosOpen} onClose={closeVideos} />
       <VideoModal data={video} onClose={() => setVideo(null)} />
 
       <TweaksPanel title="Tweaks">
