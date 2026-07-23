@@ -343,7 +343,6 @@ function VideosOverlay({ open, onClose }) {
   function SectionHead({ label, title, count }) {
     return (
       <div style={{ display: "flex", alignItems: "baseline", gap: 16, marginBottom: 28, paddingBottom: 14, borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
-        <span style={{ fontFamily: "var(--sans)", fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.14em", color: "var(--orange)" }}>{label}</span>
         <span style={{ fontFamily: "var(--display)", fontSize: "clamp(28px,3.5vw,46px)", fontWeight: 300, color: "var(--white)", lineHeight: 1, textTransform: "uppercase" }}>{title}</span>
         {count && <span style={{ fontFamily: "var(--sans)", fontSize: "12px", color: "rgba(255,255,255,0.3)", marginLeft: "auto" }}>{count}</span>}
       </div>
@@ -377,10 +376,11 @@ function VideosOverlay({ open, onClose }) {
 
         {/* In Conversation */}
         <div style={{ marginBottom: "clamp(48px,6vw,80px)" }}>
-          <SectionHead label="In Conversation" title="In Conversation" count="2 videos" />
+          <SectionHead label="In Conversation" title="In Conversation" count="3 videos" />
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: 20 }}>
             <ThumbCard kicker="In Conversation" title="DJ Sober on the Importance of Curation" video="c36a26bad23f556450b56c51797a91f8" aspect="16/9" onClick={() => setModal({ kicker: "In Conversation", title: "DJ Sober on the Importance of Curation", video: "c36a26bad23f556450b56c51797a91f8" })} />
             <ThumbCard kicker="In Conversation" title="Ken Bethea of Old 97’s on the Death of Deep Ellum" video="0a098645f612eba39cdb82eba6657d67" aspect="16/9" onClick={() => setModal({ kicker: "In Conversation", title: "Ken Bethea of Old 97’s on the Death of Deep Ellum", video: "0a098645f612eba39cdb82eba6657d67" })} />
+            <ThumbCard kicker="In Conversation" title="The D.O.C. Defines the Next 40 Years of Music" video="1b2059d4e06fffdb1a1f4fe98e99c7f4" aspect="16/9" onClick={() => setModal({ kicker: "In Conversation", title: "The D.O.C. Defines the Next 40 Years of Music", video: "1b2059d4e06fffdb1a1f4fe98e99c7f4" })} />
           </div>
         </div>
 
