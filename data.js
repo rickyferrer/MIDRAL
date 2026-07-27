@@ -436,7 +436,7 @@ window.ARTISTS = [
     place: "Denton",
     writer: "Mike Marshall",
     hasVideo: true,
-    video: "3f80880fb8bb250a30bb1a75153ec74e",
+    video: "2c375cb7ce10412ab83db6629b6bd855",
     featured: false,
     credit: "Photograph \u2014 Centro-Matic",
     pull: "Bring up a Centro album and you will quickly be their king.",
