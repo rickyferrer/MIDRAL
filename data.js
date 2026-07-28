@@ -490,6 +490,8 @@ window.ARTISTS = [
     rank: 24,
     photo: "uploads/BigX-Tha-Plug.jpg",
     name: "BigXthaPlug",
+    hasVideo: true,
+    video: "e9c1ef43ab31273d89d87f8d09bdccde",
     genre: "Hip-Hop",
     era: "2022\u2013present",
     place: "Pleasant Grove",
