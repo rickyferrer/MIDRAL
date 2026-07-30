@@ -311,7 +311,7 @@ function VideosOverlay({ open, onClose }) {
   }, [open]);
 
   const F = window.FEATURE;
-  const artistVideos = window.ARTISTS.filter((a) => a.hasVideo && a.video);
+  const artistVideos = window.ARTISTS.filter((a) => !!a.video);
 
   const linkStyle = { fontFamily: "var(--sans)", fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.14em", color: "var(--orange)", marginBottom: "8px", display: "block" };
   const titleStyle = { fontFamily: "var(--display)", fontWeight: 300, fontSize: "40px", lineHeight: 1.05, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--white)", margin: "0 0 6px" };

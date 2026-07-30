@@ -49,7 +49,7 @@ function ArtistEntry({ artist, side, featured, onVideo }) {
             <div style={{ width: "100%", height: "100%", background: "rgba(26,10,4,0.06)", display: "flex", alignItems: "center", justifyContent: "center" }}>
               <span style={{ fontFamily: "var(--sans)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", opacity: 0.3 }}>Photo coming soon</span>
             </div>}
-            {a.hasVideo ?
+            {a.video ?
             <PlayButton
               pulse
               onClick={() => onVideo({ kicker: "Watch \u00b7 No. " + a.rank, title: a.name, video: a.video })}
