@@ -171,11 +171,10 @@ function Studios() {
     });
 
     L.tileLayer(
-      'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+      'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
       {
-        attribution: '\u00a9 <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors \u00a9 <a href="https://carto.com/attributions">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 18
+        attribution: 'Tiles \u00a9 Esri \u2014 Esri, HERE, Garmin, \u00a9 OpenStreetMap contributors',
+        maxZoom: 16
       }
     ).addTo(map);
 
@@ -376,12 +375,13 @@ function VideosOverlay({ open, onClose }) {
 
         {/* In Conversation */}
         <div style={{ marginBottom: "clamp(48px,6vw,80px)" }}>
-          <SectionHead label="In Conversation" title="In Conversation" count="4 videos" />
+          <SectionHead label="In Conversation" title="In Conversation" count="5 videos" />
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: 20 }}>
             <ThumbCard kicker="In Conversation" title="DJ Sober on the Importance of Curation" video="c36a26bad23f556450b56c51797a91f8" aspect="16/9" onClick={() => setModal({ kicker: "In Conversation", title: "DJ Sober on the Importance of Curation", video: "c36a26bad23f556450b56c51797a91f8" })} />
             <ThumbCard kicker="In Conversation" title="Ken Bethea of Old 97’s on the Death of Deep Ellum" video="0a098645f612eba39cdb82eba6657d67" aspect="16/9" onClick={() => setModal({ kicker: "In Conversation", title: "Ken Bethea of Old 97’s on the Death of Deep Ellum", video: "0a098645f612eba39cdb82eba6657d67" })} />
             <ThumbCard kicker="In Conversation" title="The D.O.C. Defines the Next 40 Years of Music" video="1b2059d4e06fffdb1a1f4fe98e99c7f4" aspect="16/9" onClick={() => setModal({ kicker: "In Conversation", title: "The D.O.C. Defines the Next 40 Years of Music", video: "1b2059d4e06fffdb1a1f4fe98e99c7f4" })} />
             <ThumbCard kicker="In Conversation" title="Eric Pulido (Midlake) Sees the World with Young Eyes" video="0b694c1b042f2bc75bf39ab9ecdb5373" aspect="16/9" onClick={() => setModal({ kicker: "In Conversation", title: "Eric Pulido (Midlake) Sees the World with Young Eyes", video: "0b694c1b042f2bc75bf39ab9ecdb5373" })} />
+            <ThumbCard kicker="In Conversation" title="Is Dallas’ Secret Sauce Denton?" video="540484847bdc16dee4815b851ba21d16" aspect="16/9" onClick={() => setModal({ kicker: "In Conversation", title: "Is Dallas’ Secret Sauce Denton?", video: "540484847bdc16dee4815b851ba21d16" })} />
           </div>
         </div>
 
